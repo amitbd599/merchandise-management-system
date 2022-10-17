@@ -5,7 +5,7 @@ const ListService = require("../../Services/Common/ListService");
 const UpdateService = require("../../Services/Common/UpdateService");
 
 exports.CreateExpensesTypesService = async (req, res) => {
-  let result = await CreateService(req, ExpensesTypesModel);
+  let result = await CreateService(req, ExpensesTypesModel); 
   return res.status(200).json(result);
 };
 

@@ -5,6 +5,7 @@ const BrandController = require("../Controllers/Brands/BrandsController");
 const CategoriesController = require("../Controllers/Categories/CategoriesController");
 const CustomerController = require("../Controllers/Customer/CustomerController");
 const ExpensesTypesController = require("../Controllers/Expenses/ExpensesTypeController");
+const ExpensesController = require("../Controllers/Expenses/ExpensesController");
 const AuthVerifyMiddleware = require("../Middlewares/AuthVerifyMiddleware");
 
 // User Profile
@@ -110,4 +111,20 @@ router.get(
   ExpensesTypesController.ExpensesTypesDropdown
 );
 
+// Expense
+router.post(
+  "/createExpenses",
+  AuthVerifyMiddleware,
+  ExpensesController.createExpenses
+);
+router.post(
+  "/UpdateExpenses/:id",
+  AuthVerifyMiddleware,
+  ExpensesController.UpdateExpenses
+);
+router.get(
+  "/Expense-list/:pageNo/:perPage/:searchValue", 
+  AuthVerifyMiddleware,
+  ExpensesController.ExpensesList
+);
 module.exports = router;
