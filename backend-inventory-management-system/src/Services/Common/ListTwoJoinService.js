@@ -1,8 +1,9 @@
-const ListOneJoinService = async (
+const ListTwoJoinService = async (
   request,
   DataModel,
   SearchArray,
-  JoinStage
+  JoinStage1,
+  JoinStage2
 ) => {
   try {
     let pageNo = Number(request.params.pageNo);
@@ -12,11 +13,12 @@ const ListOneJoinService = async (
     let skipRow = (pageNo - 1) * perPage;
 
     let data;
-    console.log(JoinStage);
+
     if (searchValue !== "0") {
       data = await DataModel.aggregate([
         { $match: { userEmail: userEmail } },
-        JoinStage,
+        JoinStage1,
+        JoinStage2,
         { $match: { $or: SearchArray } },
         {
           $facet: {
@@ -28,7 +30,8 @@ const ListOneJoinService = async (
     } else {
       data = await DataModel.aggregate([
         { $match: { userEmail: userEmail } },
-        JoinStage,
+        JoinStage1,
+        JoinStage2,
         {
           $facet: {
             Total: [{ $count: "count" }],
@@ -43,4 +46,4 @@ const ListOneJoinService = async (
   }
 };
 
-module.exports = ListOneJoinService;
+module.exports = ListTwoJoinService;

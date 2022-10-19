@@ -14,7 +14,7 @@ exports.UpdateExpenses = async (req, res) => {
 };
 
 exports.ExpensesList = async (req, res) => {
-  let SearchRGX = { $regex: req.params.searchKeyword, $option: "i" };
+  let SearchRGX = { $regex: req.params.searchKeyword, $options: "i" };
   let SearchArray = [
     { Note: SearchRGX },
     { Amount: SearchRGX },
@@ -23,7 +23,7 @@ exports.ExpensesList = async (req, res) => {
 
   let JoinStage = {
     $lookup: {
-      from: "expensetypes",
+      from: "expensestypes",
       localField: "TypeID",
       foreignField: "_id",
       as: "Type",

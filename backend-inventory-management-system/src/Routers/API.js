@@ -6,6 +6,7 @@ const CategoriesController = require("../Controllers/Categories/CategoriesContro
 const CustomerController = require("../Controllers/Customer/CustomerController");
 const ExpensesTypesController = require("../Controllers/Expenses/ExpensesTypeController");
 const ExpensesController = require("../Controllers/Expenses/ExpensesController");
+const ProductController = require("../Controllers/Product/ProductController");
 const AuthVerifyMiddleware = require("../Middlewares/AuthVerifyMiddleware");
 
 // User Profile
@@ -123,8 +124,25 @@ router.post(
   ExpensesController.UpdateExpenses
 );
 router.get(
-  "/Expense-list/:pageNo/:perPage/:searchValue", 
+  "/Expense-list/:pageNo/:perPage/:searchKeyword",
   AuthVerifyMiddleware,
   ExpensesController.ExpensesList
 );
+// Product
+router.post(
+  "/createProduct",
+  AuthVerifyMiddleware,
+  ProductController.CreateProduct
+);
+router.post(
+  "/updateProduct/:id",
+  AuthVerifyMiddleware,
+  ProductController.UpdateProduct
+);
+router.get(
+  "/Product-list/:pageNo/:perPage/:searchKeyword",
+  AuthVerifyMiddleware,
+  ProductController.ProductList
+);
+
 module.exports = router;

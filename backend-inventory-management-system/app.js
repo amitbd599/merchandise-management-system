@@ -47,7 +47,6 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   (error) => {
     console.log(" Mongoose is connected");
-    console.log(error);
   }
 );
 

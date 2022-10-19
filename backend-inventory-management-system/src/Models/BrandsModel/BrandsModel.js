@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const DataSchema =new mongoose.Schema(
+const DataSchema = new mongoose.Schema(
   {
-    UserEmail: { type: String },
+    userEmail: { type: String },
     Name: { type: String },
     CreatedDate: { type: Date, default: Date.now() },
   },

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 var uniqueValidator = require("mongoose-unique-validator");
 const DataSchema = new mongoose.Schema(
   {
-    UserEmail: { type: String },
+    userEmail: { type: String },
     Name: { type: String, unique: true, required: true },
     CreatedDate: { type: Date, default: Date.now() },
   },
@@ -11,6 +11,6 @@ const DataSchema = new mongoose.Schema(
 
 DataSchema.plugin(uniqueValidator);
 
-const ExpensesTypeModel = mongoose.model("expensesTypes", DataSchema);
+const ExpensesTypeModel = mongoose.model("expensestypes", DataSchema);
 
 module.exports = ExpensesTypeModel;

@@ -1,6 +1,5 @@
 const CreateToken = require("../../Utility/CreateToken");
 
-
 const UserLoginService = async (request, UsersModel) => {
   try {
     let data = await UsersModel.aggregate([
@@ -17,8 +16,8 @@ const UserLoginService = async (request, UsersModel) => {
       },
     ]);
     if (data.length > 0) {
-      let token = await CreateToken(data[0]["email"]);
-      return { status: "Success", token: token, data: data[0] };
+      let Token = await CreateToken(data[0]["email"]);
+      return { status: "Success", Token: Token, data: data[0] };
     } else {
       return { status: "Unauthorized" };
     }
