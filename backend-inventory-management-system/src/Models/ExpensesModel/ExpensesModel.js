@@ -6,7 +6,7 @@ const DataSchema = new mongoose.Schema(
     Amount: { type: Number },
     Note: { type: String },
     CreatedDate: { type: Date, default: Date.now() },
-  },
+  }, 
   { versionKey: false }
 );
 

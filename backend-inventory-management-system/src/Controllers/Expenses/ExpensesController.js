@@ -1,5 +1,6 @@
 const expensesModel = require("../../Models/ExpensesModel/ExpensesModel");
 const CreateService = require("../../Services/Common/CreateService");
+const DeleteService = require("../../Services/Common/DeleteService");
 const ListOneJoinService = require("../../Services/Common/ListOneJoinService");
 const UpdateService = require("../../Services/Common/UpdateService");
 
@@ -35,5 +36,10 @@ exports.ExpensesList = async (req, res) => {
     SearchArray,
     JoinStage
   );
+  res.status(200).json(result);
+};
+
+exports.DeleteExpense = async (req, res) => {
+  let result = await DeleteService(req, expensesModel);
   res.status(200).json(result);
 };

@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const DataSchema = new mongoose.Schema(
   {
     userEmail: { type: String },
-    SupplierID: { type: mongoose.Schema.Types.ObjectId },
-    VatTax: { type: String },
+    CustomerID: { type: mongoose.Schema.Types.ObjectId },
     VatTax: { type: String },
     Discount: { type: Number },
     OtherCost: { type: Number },
@@ -15,5 +14,5 @@ const DataSchema = new mongoose.Schema(
   { versionKey: false }
 );
 
-const PurchaseModel = mongoose.model("purchases", DataSchema);
-module.exports = PurchaseModel;
+const SalesModel = mongoose.model("sales", DataSchema);
+module.exports = SalesModel;

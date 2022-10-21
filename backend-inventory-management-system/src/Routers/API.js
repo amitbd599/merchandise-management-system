@@ -7,6 +7,10 @@ const CustomerController = require("../Controllers/Customer/CustomerController")
 const ExpensesTypesController = require("../Controllers/Expenses/ExpensesTypeController");
 const ExpensesController = require("../Controllers/Expenses/ExpensesController");
 const ProductController = require("../Controllers/Product/ProductController");
+const PurchaseController = require("../Controllers/Purchases/PurchasesController");
+const SalesController = require("../Controllers/Sales/SalesController");
+const ReturnController = require("../Controllers/Return/ReturnController");
+const SuppliersController = require("../Controllers/Suppliers/SuppliersController");
 const AuthVerifyMiddleware = require("../Middlewares/AuthVerifyMiddleware");
 
 // User Profile
@@ -46,6 +50,12 @@ router.get(
   BrandController.BrandDropdown
 );
 
+router.delete(
+  "/DeleteBrand/:id",
+  AuthVerifyMiddleware,
+  BrandController.DeleteBrand
+);
+
 // Category
 router.post(
   "/CreateCategoryService",
@@ -66,6 +76,12 @@ router.get(
   "/CategoryDropdown",
   AuthVerifyMiddleware,
   CategoriesController.CategoryDropdown
+);
+
+router.delete(
+  "/DeleteCategory/:id",
+  AuthVerifyMiddleware,
+  CategoriesController.DeleteCategory
 );
 
 // Customer
@@ -90,6 +106,12 @@ router.get(
   CustomerController.CustomerDropdown
 );
 
+router.delete(
+  "/DeleteCustomer/:id",
+  AuthVerifyMiddleware,
+  CustomerController.DeleteCustomer
+);
+
 // ExpensesTypes
 router.post(
   "/CreateExpensesTypesService",
@@ -107,7 +129,7 @@ router.get(
   ExpensesTypesController.ExpensesTypesList
 );
 router.get(
-  "/ExpensesTypesDropdown",
+  "/ExpensesTypesDropdown/:id",
   AuthVerifyMiddleware,
   ExpensesTypesController.ExpensesTypesDropdown
 );
@@ -128,6 +150,42 @@ router.get(
   AuthVerifyMiddleware,
   ExpensesController.ExpensesList
 );
+
+router.get(
+  "/ExpenseDelete/:id",
+  AuthVerifyMiddleware,
+  ExpensesController.DeleteExpense
+);
+
+router.delete(
+  "/DeleteExpense/:id",
+  AuthVerifyMiddleware,
+  ExpensesController.DeleteExpense
+);
+
+// Suppliers
+router.post(
+  "/CreateSuppliers",
+  AuthVerifyMiddleware,
+  SuppliersController.CreateSupplier
+);
+router.post(
+  "/UpdateSuppliers/:id",
+  AuthVerifyMiddleware,
+  SuppliersController.UpdateSupplier
+);
+router.get(
+  "/Suppliers-list/:pageNo/:perPage/:searchKeyword",
+  AuthVerifyMiddleware,
+  SuppliersController.SupplierList
+);
+
+router.delete(
+  "/DeleteSupplier/:id",
+  AuthVerifyMiddleware,
+  SuppliersController.DeleteSupplier
+);
+
 // Product
 router.post(
   "/createProduct",
@@ -143,6 +201,60 @@ router.get(
   "/Product-list/:pageNo/:perPage/:searchKeyword",
   AuthVerifyMiddleware,
   ProductController.ProductList
+);
+
+router.delete(
+  "/DeleteProduct/:id",
+  AuthVerifyMiddleware,
+  ProductController.DeleteProduct
+);
+
+// Purchase
+router.post(
+  "/CreatePurchase",
+  AuthVerifyMiddleware,
+  PurchaseController.CreatePurchase
+);
+router.get(
+  "/Purchase-list/:pageNo/:perPage/:searchKeyword",
+  AuthVerifyMiddleware,
+  PurchaseController.PurchaseList
+);
+router.delete(
+  "/DeletePurchase/:id",
+  AuthVerifyMiddleware,
+  PurchaseController.PurchaseDelete
+);
+
+// Sales
+router.post("/CreateSales", AuthVerifyMiddleware, SalesController.CreateSales);
+router.get(
+  "/Sales-list/:pageNo/:perPage/:searchKeyword",
+  AuthVerifyMiddleware,
+  SalesController.SalesList
+);
+router.delete(
+  "/DeleteSales/:id",
+  AuthVerifyMiddleware,
+  SalesController.SaleDelete
+);
+
+// Return
+router.post(
+  "/CreateReturn",
+  AuthVerifyMiddleware,
+  ReturnController.CreateReturns
+);
+router.get(
+  "/Return-list/:pageNo/:perPage/:searchKeyword",
+  AuthVerifyMiddleware,
+  ReturnController.ReturnList
+);
+
+router.delete(
+  "/DeleteReturn/:id",
+  AuthVerifyMiddleware,
+  ReturnController.ReturnDelete
 );
 
 module.exports = router;

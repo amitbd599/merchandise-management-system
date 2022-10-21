@@ -1,5 +1,12 @@
+const { default: mongoose } = require("mongoose");
 const ProductModel = require("../../Models/ProductModel/ProductModel");
+const PurchaseProductsModel = require("../../Models/PurchaseModel/PurchaseProductsModel");
+const ReturnModel = require("../../Models/ReturnModel/ReturnModel");
+const ReturnProductsModel = require("../../Models/ReturnModel/ReturnProductsModel");
+const SalesProductsModel = require("../../Models/SalesModel/SalesProductsModel");
+const CheckAssociateService = require("../../Services/Common/CheckAssociateService");
 const CreateService = require("../../Services/Common/CreateService");
+const DeleteService = require("../../Services/Common/DeleteService");
 const Dropdown = require("../../Services/Common/DropDownService");
 const ListTwoJoinService = require("../../Services/Common/ListTwoJoinService");
 const UpdateService = require("../../Services/Common/UpdateService");
@@ -49,4 +56,41 @@ exports.ProductList = async (req, res) => {
     JoinStage2
   );
   res.status(200).json(result);
+};
+
+exports.DeleteProduct = async (req, res) => {
+  let DeleteID = req.params.id;
+  let ObjectID = mongoose.Types.ObjectId;
+
+  let CheckReturnAssociate = await CheckAssociateService(
+    { ProductID: ObjectID(DeleteID) },
+    ReturnProductsModel
+  );
+
+  let CheckPurchaseAssociate = await CheckAssociateService(
+    { ProductID: ObjectID(DeleteID) },
+    PurchaseProductsModel
+  );
+
+  let CheckSaleAssociate = await CheckAssociateService(
+    { ProductID: ObjectID(DeleteID) },
+    SalesProductsModel
+  );
+
+  if (CheckReturnAssociate) {
+    res
+      .status(200)
+      .json({ status: "Associate", data: "Associate With Product." });
+  } else if (CheckPurchaseAssociate) {
+    res
+      .status(200)
+      .json({ status: "Associate", data: "Associate With Product." });
+  } else if (CheckSaleAssociate) {
+    res
+      .status(200)
+      .json({ status: "Associate", data: "Associate With Product." });
+  } else {
+    let result = await DeleteService(req, ProductModel);
+    res.status(200).json(result);
+  }
 };

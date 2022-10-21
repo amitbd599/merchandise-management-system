@@ -9,4 +9,4 @@ const DataSchema = new mongoose.Schema(
 );
 
 const BrandModel = mongoose.model("brands", DataSchema);
-module.exports = BrandModel;
+module.exports = BrandModel; 

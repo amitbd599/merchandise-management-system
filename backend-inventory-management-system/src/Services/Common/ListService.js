@@ -3,13 +3,13 @@ const ListService = async (request, Model, SearchArray) => {
     let pageNo = Number(request.params.pageNo);
     let perPage = Number(request.params.perPage);
     let searchValue = request.params.searchKeyword;
-    let UserEmail = request.headers["email"];
+    let userEmail = request.headers["email"];
     let skipRow = (pageNo - 1) * perPage;
     let data;
     if (searchValue !== "0") {
       let searchQuery = { $or: SearchArray };
       data = await Model.aggregate([
-        { $match: { UserEmail: UserEmail } },
+        { $match: { userEmail: userEmail } },
         { $match: searchQuery },
 
         {
@@ -21,7 +21,7 @@ const ListService = async (request, Model, SearchArray) => {
       ]);
     } else {
       data = await Model.aggregate([
-        { $match: { UserEmail: UserEmail } },
+        { $match: { userEmail: userEmail } },
         {
           $facet: {
             Total: [{ $count: "Count" }],

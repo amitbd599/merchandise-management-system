@@ -12,7 +12,6 @@ const ListOneJoinService = async (
     let skipRow = (pageNo - 1) * perPage;
 
     let data;
-    console.log(JoinStage);
     if (searchValue !== "0") {
       data = await DataModel.aggregate([
         { $match: { userEmail: userEmail } },
