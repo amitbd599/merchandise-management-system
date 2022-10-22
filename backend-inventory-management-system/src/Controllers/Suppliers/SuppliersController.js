@@ -4,6 +4,7 @@ const SuppliersModel = require("../../Models/SuppliersModel/SuppliersModel");
 const CheckAssociateService = require("../../Services/Common/CheckAssociateService");
 const CreateService = require("../../Services/Common/CreateService");
 const DeleteService = require("../../Services/Common/DeleteService");
+const DetailsByIDService = require("../../Services/Common/DetailsByIDService");
 const Dropdown = require("../../Services/Common/DropDownService");
 const ListService = require("../../Services/Common/ListService");
 const UpdateService = require("../../Services/Common/UpdateService");
@@ -32,6 +33,10 @@ exports.SupplierList = async (req, res) => {
 
 exports.SupplierDropdown = async (req, res) => {
   let result = await Dropdown(req, SuppliersModel, { _id: 1, Name: 1 });
+  return res.status(200).json(result);
+};
+exports.SupplierDetailsByID = async (req, res) => {
+  let result = await DetailsByIDService(req, SuppliersModel);
   return res.status(200).json(result);
 };
 

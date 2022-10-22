@@ -3,6 +3,7 @@ const PurchaseProductsModel = require("../../Models/PurchaseModel/PurchaseProduc
 
 const CreateParentChildsService = require("../../Services/Common/CreateParentChildsService");
 const DeleteParentChildsService = require("../../Services/Common/DeleteParentChildsService");
+const DetailsByIDService = require("../../Services/Common/DetailsByIDService");
 const ListOneJoinService = require("../../Services/Common/ListOneJoinService");
 
 exports.CreatePurchase = async (req, res) => {
@@ -39,6 +40,11 @@ exports.PurchaseList = async (req, res) => {
     JoinStage
   );
   res.status(200).json(result);
+};
+
+exports.PurchaseDetailsByID = async (req, res) => {
+  let result = await DetailsByIDService(req, PurchaseModel);
+  return res.status(200).json(result);
 };
 
 exports.PurchaseDelete = async (req, res) => {

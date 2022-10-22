@@ -4,6 +4,7 @@ const ProductModel = require("../../Models/ProductModel/ProductModel");
 const CheckAssociateService = require("../../Services/Common/CheckAssociateService");
 const CreateService = require("../../Services/Common/CreateService");
 const DeleteService = require("../../Services/Common/DeleteService");
+const DetailsByIDService = require("../../Services/Common/DetailsByIDService");
 const Dropdown = require("../../Services/Common/DropDownService");
 const ListService = require("../../Services/Common/ListService");
 const UpdateService = require("../../Services/Common/UpdateService");
@@ -25,6 +26,11 @@ exports.BrandList = async (req, res) => {
 };
 exports.BrandDropdown = async (req, res) => {
   let result = await Dropdown(req, BrandModel, { _id: 1, Name: 1 });
+  return res.status(200).json(result);
+};
+
+exports.BrandDetailsByID = async (req, res) => {
+  let result = await DetailsByIDService(req, BrandModel);
   return res.status(200).json(result);
 };
 

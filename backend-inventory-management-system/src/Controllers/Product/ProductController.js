@@ -7,6 +7,7 @@ const SalesProductsModel = require("../../Models/SalesModel/SalesProductsModel")
 const CheckAssociateService = require("../../Services/Common/CheckAssociateService");
 const CreateService = require("../../Services/Common/CreateService");
 const DeleteService = require("../../Services/Common/DeleteService");
+const DetailsByIDService = require("../../Services/Common/DetailsByIDService");
 const Dropdown = require("../../Services/Common/DropDownService");
 const ListTwoJoinService = require("../../Services/Common/ListTwoJoinService");
 const UpdateService = require("../../Services/Common/UpdateService");
@@ -56,6 +57,11 @@ exports.ProductList = async (req, res) => {
     JoinStage2
   );
   res.status(200).json(result);
+};
+
+exports.ProductDetailsByID = async (req, res) => {
+  let result = await DetailsByIDService(req, ProductModel);
+  return res.status(200).json(result);
 };
 
 exports.DeleteProduct = async (req, res) => {
