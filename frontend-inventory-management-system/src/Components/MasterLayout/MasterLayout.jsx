@@ -1,7 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-const MasterLayout = () => {
-  return <div></div>;
+const MasterLayout = (props) => {
+  return (
+    <Fragment>
+      <nav></nav>
+
+      <div className="content">{props.children}</div>
+    </Fragment>
+  );
 };
 
 export default MasterLayout;
