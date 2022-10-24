@@ -1,0 +1,30 @@
+/* Scroll Bar */
+.sidebar .sidebarBody::-webkit-scrollbar {
+  display: none !important;
+}
+.sidebar .sidebarBody {
+  scrollbar-width: none !important;
+}
+.sidebar .sidebarBody {
+  width: 280px;
+  transition: all 0.3s linear;
+}
+.sidebar.active .sidebarBody {
+  transform: translateX(-280px);
+}
+
+.topNavbar {
+  padding-left: 280px;
+  transition: all 0.3s linear;
+}
+.topNavbar.active {
+  padding-left: 0;
+}
+
+.content {
+  padding-left: 280px;
+  transition: all 0.3s linear;
+}
+.content.active {
+  padding-left: 0;
+}

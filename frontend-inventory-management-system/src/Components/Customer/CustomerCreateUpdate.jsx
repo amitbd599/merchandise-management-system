@@ -1,7 +1,7 @@
 import React from "react";
 
 const CustomerCreateUpdate = () => {
-  return <div></div>;
+  return <div>CustomerCreateUpdate</div>;
 };
 
 export default CustomerCreateUpdate;

@@ -1,6 +1,20 @@
 import React from "react";
+import { useState } from "react";
 import ReactCodeInput from "react-code-input";
+import { useNavigate } from "react-router-dom";
+import { VerifyOTPService } from "../../API/UserAPIRequest";
+import { getEmail } from "../../Helper/SessionHelper";
 const VerifyOTP = () => {
+  let navigate = useNavigate();
+  let [OTP, setOTP] = useState("");
+  const SubmitOTP = async () => {
+    if (OTP.length === 6) {
+      let result = await VerifyOTPService(getEmail(), OTP);
+      if (result) {
+        navigate("/ResetPasswordService");
+      }
+    }
+  };
   let defaultInputStyle = {
     fontFamily: "monospace",
     MozAppearance: "textfield",
@@ -23,7 +37,7 @@ const VerifyOTP = () => {
           <h1 className="text-xl font-semibold">
             <span className="font-medium">OTP Verification</span>
           </h1>
-          <form className="mt-6">
+          <div className="mt-6">
             <label
               for="email"
               className="block mt-2 text-xs font-semibold text-gray-600 uppercase"
@@ -31,18 +45,19 @@ const VerifyOTP = () => {
               E-mail
             </label>
             <ReactCodeInput
-              // onChange={(value) => SetOTP(value)}
+              onChange={(value) => setOTP(value)}
               inputStyle={defaultInputStyle}
               fields={6}
             />
 
             <button
+              onClick={SubmitOTP}
               type="submit"
               className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-purple-600 shadow-lg focus:outline-none hover:bg-purple-700 hover:shadow-none"
             >
               Submit OTP
             </button>
-          </form>
+          </div>
         </div>
       </div>
       {/*  */}

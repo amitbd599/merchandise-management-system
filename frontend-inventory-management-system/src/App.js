@@ -1,7 +1,11 @@
 import { Fragment } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { getToken } from "./Helper/SessionHelper";
+import CustomerCreateUpdatePage from "./Pages/Customer/CustomerCreateUpdatePage";
+import CustomerListPage from "./Pages/Customer/CustomerListPage";
 import DashboardPage from "./Pages/Dashboard/DashboardPage";
+import SupplierCreateUpdatePage from "./Pages/Supplier/SupplierCreateUpdatePage";
+import SupplierListPage from "./Pages/Supplier/SupplierListPage";
 import CreatePasswordPage from "./Pages/User/CreatePasswordPage";
 import LoginPage from "./Pages/User/LoginPage";
 import RegistrationPage from "./Pages/User/RegistrationPage";
@@ -13,7 +17,19 @@ function App() {
       <Fragment>
         <BrowserRouter>
           <Routes>
-            <Route exact path="/Dashboard" element={<DashboardPage />} />
+            <Route exact path="/" element={<DashboardPage />} />
+            <Route
+              exact
+              path="/CustomerCreateUpdate"
+              element={<CustomerCreateUpdatePage />}
+            />
+            <Route exact path="/CustomerList" element={<CustomerListPage />} />
+            <Route
+              exact
+              path="/SupplierCreateUpdate"
+              element={<SupplierCreateUpdatePage />}
+            />
+            <Route exact path="/SupplierList" element={<SupplierListPage />} />
           </Routes>
         </BrowserRouter>
       </Fragment>
