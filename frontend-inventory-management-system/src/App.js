@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { getToken } from "./Helper/SessionHelper";
+import DashboardPage from "./Pages/Dashboard/DashboardPage";
 import CreatePasswordPage from "./Pages/User/CreatePasswordPage";
 import LoginPage from "./Pages/User/LoginPage";
 import RegistrationPage from "./Pages/User/RegistrationPage";
@@ -12,7 +13,7 @@ function App() {
       <Fragment>
         <BrowserRouter>
           <Routes>
-            {/* <Route path="/" element={<Navigate to="/Login" replace />} /> */}
+            <Route exact path="/Dashboard" element={<DashboardPage />} />
           </Routes>
         </BrowserRouter>
       </Fragment>

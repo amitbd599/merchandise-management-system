@@ -10,7 +10,7 @@ import {
 } from "../Helper/SessionHelper";
 import { setProfile } from "../Redux/State-slice/Profile-Slice";
 import { HideLoader, ShowLoader } from "../Redux/State-slice/Setting-Slice";
-import store from "../redux/store/store";
+import store from "../Redux/Store/Store";
 
 const TokenData = { headers: { token: getToken() } };
 
@@ -21,7 +21,8 @@ export const LoginRequest = async (email, password) => {
     let URL = BaseURL + "/Login";
     let PostBody = { email: email, password: password };
     let res = await axios.post(URL, PostBody);
-    setToken(res.data["token"]);
+    setToken(res.data["Token"]);
+    debugger;
     setUserDetails(res.data["data"]);
     SuccessToast("Login successful");
     store.dispatch(HideLoader());
@@ -56,8 +57,9 @@ export const RegisterRequest = async (
     let res = await axios.post(URL, PostBody);
     store.dispatch(HideLoader());
     if (res.status === 200) {
-      if (res.data["status"] === "fail") {
+      if (res.data["status"] === "Fail") {
         if (res.data["data"]["keyPattern"]["email"] === 1) {
+          debugger;
           ErrorToast("Email already exists");
           return false;
         } else {

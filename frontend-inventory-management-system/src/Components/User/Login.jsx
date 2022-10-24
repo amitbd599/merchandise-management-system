@@ -1,7 +1,27 @@
 import React from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { LoginRequest } from "../../API/UserAPIRequest";
+import { ErrorToast, IsEmail, IsEmpty } from "../../Helper/FormHelper";
 
 const Login = () => {
+  let passwordRef,
+    emailRef = useRef();
+
+  const submitLogin = async () => {
+    let email = emailRef.value;
+    let password = passwordRef.value;
+    if (IsEmail(email)) {
+      ErrorToast("Invalid email address");
+    } else if (IsEmpty(password)) {
+      ErrorToast("Password Required");
+    } else {
+      let result = await LoginRequest(email, password);
+      if (result) {
+        window.location.href = "/";
+      }
+    }
+  };
   return (
     <div>
       <div className="grid min-h-screen place-items-center bg-slate-100">
@@ -11,7 +31,7 @@ const Login = () => {
               Please Fill In Your Information To Continue
             </span>
           </h1>
-          <form className="mt-6">
+          <div className="mt-6">
             <label
               for="email"
               className="block mt-2 text-xs font-semibold text-gray-600 uppercase"
@@ -19,6 +39,7 @@ const Login = () => {
               E-mail
             </label>
             <input
+              ref={(input) => (emailRef = input)}
               id="email"
               type="email"
               name="email"
@@ -34,6 +55,7 @@ const Login = () => {
               Password
             </label>
             <input
+              ref={(input) => (passwordRef = input)}
               id="password"
               type="password"
               name="password"
@@ -43,6 +65,7 @@ const Login = () => {
               required
             />
             <button
+              onClick={submitLogin}
               type="submit"
               className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-purple-600 shadow-lg focus:outline-none hover:bg-purple-700 hover:shadow-none"
             >
@@ -61,7 +84,7 @@ const Login = () => {
                 </span>
               </Link>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
