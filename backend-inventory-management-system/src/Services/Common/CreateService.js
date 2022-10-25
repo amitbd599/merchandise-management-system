@@ -5,7 +5,7 @@ const CreateService = async (request, Model) => {
     let data = await Model.create(PostBody);
     return { status: "Success", data: data };
   } catch (e) {
-    return { status: "Fail", data: e.toString() };
+    return { status: "Fail", data: e };
   }
 };
 

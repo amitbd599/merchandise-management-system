@@ -9,7 +9,7 @@ const UpdateService = async (request, Model) => {
     );
     return { status: "Success", data: data };
   } catch (e) {
-    return { status: "Fail", data: e.toString() };
+    return { status: "Fail", data: e };
   }
 };
 
