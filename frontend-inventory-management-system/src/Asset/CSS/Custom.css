@@ -28,3 +28,12 @@
 .content.active {
   padding-left: 0;
 }
+
+.profile__intro {
+  visibility: hidden;
+  opacity: 0;
+}
+.profileIcon:hover .profile__intro {
+  visibility: visible;
+  opacity: 1;
+}

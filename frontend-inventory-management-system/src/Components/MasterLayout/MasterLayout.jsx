@@ -280,7 +280,7 @@ const MasterLayout = (props) => {
       {/* Top Navbar Start */}
       <div className={active ? "topNavbar active" : "topNavbar"}>
         <nav className=" bg-[#fff] drop-shadow-md h-[50px] flex items-center">
-          <div className=" container mx-auto px-4">
+          <div className=" container mx-auto px-5">
             <div className="item flex justify-between">
               <div className="leftItems">
                 <MdViewHeadline
@@ -311,50 +311,53 @@ const MasterLayout = (props) => {
               <span>
                 <MdNotificationsActive className="text-[25px] text-slate-200 cursor-pointer" />
               </span>
-              <span>
-                <MdOutlineManageAccounts className="text-[25px] text-slate-200 cursor-pointer" />
-              </span>
-            </div>
-            <div className="absolute bg-[#FFFFFF]  py-6 rounded-md w-[200px] top-[43px] right-[20px] overflow-hidden">
-              <div className="px-5">
-                <span className="text-sm text-slate-600">Sign in As</span>{" "}
-                <br />
-                <span className="text-xs  mt-0 text-slate-600">
-                  amitbd599@gmail.com
-                </span>
-              </div>
-              <hr />
-              <div>
-                <NavLink
-                  to={"/"}
-                  end
-                  className="flex items-center hover:bg-slate-100 px-5 py-3"
-                >
-                  <MdPerson className="inline text-[25px] text-slate-600" />{" "}
-                  <span className="text-[14px] mt-1 ml-1 text-slate-600">
-                    Profile
-                  </span>
-                </NavLink>
-                <NavLink
-                  to={"/"}
-                  end
-                  className="flex items-center hover:bg-slate-100 px-5 py-3"
-                >
-                  <MdOutlineSettings className="inline text-[25px] text-slate-600" />{" "}
-                  <span className="text-[14px] mt-1 ml-1 text-slate-600">
-                    Setting
-                  </span>
-                </NavLink>
-                <hr />
-                <div className=" block cursor-pointer mt-2">
-                  <div className="block items-center hover:bg-slate-100 px-5 py-3 ">
-                    <MdPerson className="inline text-[25px] text-slate-600" />{" "}
-                    <span className="text-[14px] mt-1 ml-1 text-slate-600">
-                      Sign Out
-                    </span>
+              <span className="profileIcon cursor-pointer">
+                <MdOutlineManageAccounts className="text-[25px] text-slate-200  " />
+                <div className="profile__intro absolute pt-[20px] top-[20px] right-[20px]">
+                  <div className="   bg-[#FFFFFF]  py-6 rounded-md w-[200px]   overflow-hidden">
+                    <div className="px-5">
+                      <span className="text-sm text-slate-600 font-semibold">
+                        Sign in As
+                      </span>{" "}
+                      <span className="text-xs block mt-0 text-slate-600">
+                        amitbd599@gmail.com
+                      </span>
+                    </div>
+                    <hr />
+                    <div>
+                      <NavLink
+                        to={"/"}
+                        end
+                        className="flex items-center hover:bg-slate-100 px-5 py-3"
+                      >
+                        <MdPerson className="inline text-[25px] text-slate-600" />{" "}
+                        <span className="text-[14px] mt-1 ml-1 text-slate-600">
+                          Profile
+                        </span>
+                      </NavLink>
+                      <NavLink
+                        to={"/"}
+                        end
+                        className="flex items-center hover:bg-slate-100 px-5 py-3"
+                      >
+                        <MdOutlineSettings className="inline text-[25px] text-slate-600" />{" "}
+                        <span className="text-[14px] mt-1 ml-1 text-slate-600">
+                          Setting
+                        </span>
+                      </NavLink>
+                      <hr />
+                      <div className=" block cursor-pointer mt-2">
+                        <div className="block items-center hover:bg-slate-100 px-5 py-3 ">
+                          <MdPerson className="inline text-[25px] text-slate-600" />{" "}
+                          <span className="text-[14px] mt-1 ml-1 text-slate-600">
+                            Sign Out
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </span>
             </div>
           </div>
           <div className="profileSection mt-10">
