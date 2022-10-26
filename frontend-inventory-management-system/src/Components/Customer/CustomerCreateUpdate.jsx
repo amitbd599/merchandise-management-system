@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import store from "../../Redux/Store/Store";
 import { onChangeCustomerInput } from "../../Redux/State-slice/Customer-Slice";
-import { CreateCustomerRequestAPI } from "../../API/CustomerAPIRequest";
+import { CreateCustomerRequestAPI, CustomerUpdateRequestAPI } from "../../API/CustomerAPIRequest";
 import { ErrorToast, IsEmail, IsEmpty } from "../../Helper/FormHelper";
 import { useEffect } from "react";
 const CustomerCreateUpdate = () => {
@@ -14,6 +14,8 @@ const CustomerCreateUpdate = () => {
     let params = new URLSearchParams(window.location.search);
     let id = params.get("id");
     setItemID(id);
+
+    (async()=>{await CustomerUpdateRequestAPI()})
   }, []);
 
   const saveChange = async () => {
