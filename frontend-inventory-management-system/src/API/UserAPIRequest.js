@@ -21,15 +21,21 @@ export const LoginRequest = async (email, password) => {
     let URL = BaseURL + "/Login";
     let PostBody = { email: email, password: password };
     let res = await axios.post(URL, PostBody);
-    setToken(res.data["Token"]);
-    debugger;
-    setUserDetails(res.data["data"]);
-    SuccessToast("Login successful");
-    store.dispatch(HideLoader());
-    return true;
+
+    if (res.status === 200 && res.data["status"] === "Success") {
+      setToken(res.data["Token"]);
+      setUserDetails(res.data["data"]);
+      SuccessToast("Login successful");
+      store.dispatch(HideLoader());
+      return true;
+    } else {
+      ErrorToast("Invalid Email or Password");
+      store.dispatch(HideLoader());
+      return false;
+    }
   } catch (e) {
     store.dispatch(HideLoader());
-    ErrorToast("Invalid Email or Password");
+    ErrorToast("Something went wrong, please try again");
     return false;
   }
 };

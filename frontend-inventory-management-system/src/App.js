@@ -5,8 +5,9 @@ import BrandCreateUpdatePage from "./Pages/Brand/BrandCreateUpdatePage";
 import BrandListPage from "./Pages/Brand/BrandListPage";
 import CategoryCreateUpdatePage from "./Pages/Category/CategoryCreateUpdatePage";
 import CategoryListPage from "./Pages/Category/CategoryListPage";
-import CustomerCreateUpdatePage from "./Pages/Customer/CustomerCreateUpdatePage";
+import CustomerCreatePage from "./Pages/Customer/CustomerCreatePage";
 import CustomerListPage from "./Pages/Customer/CustomerListPage";
+import CustomerUpdatePage from "./Pages/Customer/CustomerUpdatePage";
 import DashboardPage from "./Pages/Dashboard/DashboardPage";
 import ExpenseCreateUpdatePage from "./Pages/Expense/ExpenseCreateUpdatePage";
 import ExpenseListPage from "./Pages/Expense/ExpenseListPage";
@@ -31,92 +32,103 @@ import LoginPage from "./Pages/User/LoginPage";
 import RegistrationPage from "./Pages/User/RegistrationPage";
 import SendOTPPage from "./Pages/User/SendOTPPage";
 import VerifyOTPPage from "./Pages/User/VerifyOTPPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
+import "animate.css";
 function App() {
   if (getToken()) {
     return (
       <Fragment>
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={<DashboardPage />} />
+            <Route exact path='/' element={<DashboardPage />} />
             <Route
               exact
-              path="/CustomerCreateUpdate"
-              element={<CustomerCreateUpdatePage />}
+              path='/CustomerCreate'
+              element={<CustomerCreatePage />}
             />
-            <Route path="/CustomerList" element={<CustomerListPage />} />
             <Route
               exact
-              path="/SupplierCreateUpdate"
+              path='/CustomerUpdate/:id'
+              element={<CustomerUpdatePage />}
+            />
+            <Route path='/CustomerList' element={<CustomerListPage />} />
+            <Route
+              exact
+              path='/SupplierCreateUpdate'
               element={<SupplierCreateUpdatePage />}
             />
-            <Route exact path="/SupplierList" element={<SupplierListPage />} />
+            <Route exact path='/SupplierList' element={<SupplierListPage />} />
             <Route
               exact
-              path="/ExpenseTypeCreateUpdate"
+              path='/ExpenseTypeCreateUpdate'
               element={<ExpenseTypeCreateUpdatePage />}
             />
             <Route
               exact
-              path="/ExpenseTypeList"
+              path='/ExpenseTypeList'
               element={<ExpenseTypeListPage />}
             />
             <Route
               exact
-              path="/ExpenseCreateUpdate"
+              path='/ExpenseCreateUpdate'
               element={<ExpenseCreateUpdatePage />}
             />
-            <Route exact path="/ExpenseList" element={<ExpenseListPage />} />
+            <Route exact path='/ExpenseList' element={<ExpenseListPage />} />
 
             <Route
               exact
-              path="/BrandCreateUpdate"
+              path='/BrandCreateUpdate'
               element={<BrandCreateUpdatePage />}
             />
-            <Route exact path="/BrandList" element={<BrandListPage />} />
+            <Route exact path='/BrandList' element={<BrandListPage />} />
             <Route
               exact
-              path="/CategoryCreateUpdate"
+              path='/CategoryCreateUpdate'
               element={<CategoryCreateUpdatePage />}
             />
-            <Route exact path="/CategoryList" element={<CategoryListPage />} />
+            <Route exact path='/CategoryList' element={<CategoryListPage />} />
             <Route
               exact
-              path="/ProductCreateUpdate"
+              path='/ProductCreateUpdate'
               element={<ProductCreateUpdatePage />}
             />
-            <Route exact path="/ProductList" element={<ProductListPage />} />
+            <Route exact path='/ProductList' element={<ProductListPage />} />
             <Route
               exact
-              path="/PurchaseCreateUpdate"
+              path='/PurchaseCreateUpdate'
               element={<PurchaseCreateUpdatePage />}
             />
-            <Route exact path="/PurchaseList" element={<PurchaseListPage />} />
+            <Route exact path='/PurchaseList' element={<PurchaseListPage />} />
             <Route
               exact
-              path="/SalesCreateUpdate"
+              path='/SalesCreateUpdate'
               element={<SalesCreateUpdatePage />}
             />
-            <Route exact path="/SalesList" element={<SalesListPage />} />
+            <Route exact path='/SalesList' element={<SalesListPage />} />
             <Route
               exact
-              path="/ReturnCreateUpdate"
+              path='/ReturnCreateUpdate'
               element={<ReturnCreateUpdatePage />}
             />
-            <Route exact path="/ReturnList" element={<ReturnListPage />} />
-            <Route exact path="/SaleReport" element={<SaleReportPage />} />
-            <Route exact path="/ReturnReport" element={<ReturnReportPage />} />
+            <Route exact path='/ReturnList' element={<ReturnListPage />} />
+            <Route exact path='/SaleReport' element={<SaleReportPage />} />
+            <Route exact path='/ReturnReport' element={<ReturnReportPage />} />
             <Route
               exact
-              path="/PurchaseReport"
+              path='/PurchaseReport'
               element={<PurchaseReportPage />}
             />
             <Route
               exact
-              path="/ExpenseReport"
+              path='/ExpenseReport'
               element={<ExpenseReportPage />}
             />
           </Routes>
         </BrowserRouter>
+        <ToastContainer />
+        <Toaster position='bottom-center' reverseOrder={false} />
       </Fragment>
     );
   } else {
@@ -124,18 +136,20 @@ function App() {
       <Fragment>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/Login" replace />} />
-            <Route exact path="/Login" element={<LoginPage />} />
-            <Route exact path="/Registration" element={<RegistrationPage />} />
-            <Route exact path="/VerifyEmailService" element={<SendOTPPage />} />
-            <Route exact path="/VerifyOTPService" element={<VerifyOTPPage />} />
+            <Route path='/' element={<Navigate to='/Login' replace />} />
+            <Route exact path='/Login' element={<LoginPage />} />
+            <Route exact path='/Registration' element={<RegistrationPage />} />
+            <Route exact path='/VerifyEmailService' element={<SendOTPPage />} />
+            <Route exact path='/VerifyOTPService' element={<VerifyOTPPage />} />
             <Route
               exact
-              path="/ResetPasswordService"
+              path='/ResetPasswordService'
               element={<CreatePasswordPage />}
             />
           </Routes>
         </BrowserRouter>
+        <ToastContainer />
+        <Toaster position='bottom-center' reverseOrder={false} />
       </Fragment>
     );
   }

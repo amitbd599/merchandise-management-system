@@ -10,9 +10,9 @@ const DetailsByIDService = async (request, Model) => {
     QueryObject["userEmail"] = userEmail;
 
     let data = await Model.aggregate([{ $match: QueryObject }]);
-    return { status: "success", data: data };
+    return { status: "Success", data: data };
   } catch (error) {
-    return { status: "fail", data: error.toString() };
+    return { status: "Fail", data: error.toString() };
   }
 };
 

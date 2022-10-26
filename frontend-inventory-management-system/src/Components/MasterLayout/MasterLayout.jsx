@@ -83,193 +83,193 @@ const MasterLayout = (props) => {
   const NavItems = [
     {
       title: "Dashboard",
-      icon: <MdDashboardCustomize className="inline" />,
+      icon: <MdDashboardCustomize className='inline' />,
       url: "/Dashboard",
       subMenu: [
         {
           title: "Dashboard",
-          icon: <MdGraphicEq size={16} className="inline" />,
+          icon: <MdGraphicEq size={16} className='inline' />,
           url: "/",
         },
         {
           title: "Analytics",
-          icon: <MdAnalytics size={16} className="inline" />,
+          icon: <MdAnalytics size={16} className='inline' />,
           url: "/Analytics",
         },
       ],
     },
     {
       title: "Customer",
-      icon: <MdPeople className="inline" />,
+      icon: <MdPeople className='inline' />,
       url: "/Customer",
       subMenu: [
         {
           title: "New Customer",
-          icon: <MdHowToReg size={16} className="inline" />,
-          url: "/CustomerCreateUpdate",
+          icon: <MdHowToReg size={16} className='inline' />,
+          url: "/CustomerCreate",
         },
         {
           title: "Customer List",
-          icon: <MdOutlineFormatListBulleted size={16} className="inline" />,
+          icon: <MdOutlineFormatListBulleted size={16} className='inline' />,
           url: "/CustomerList",
         },
       ],
     },
     {
       title: "Supplier",
-      icon: <MdOutlineDepartureBoard className="inline" />,
+      icon: <MdOutlineDepartureBoard className='inline' />,
       url: "/Supplier",
       subMenu: [
         {
           title: "New Supplier",
-          icon: <MdOutlineSupport size={16} className="inline" />,
+          icon: <MdOutlineSupport size={16} className='inline' />,
           url: "/SupplierCreateUpdate",
         },
         {
           title: "Supplier List",
-          icon: <MdOutlineFormatListBulleted size={16} className="inline" />,
+          icon: <MdOutlineFormatListBulleted size={16} className='inline' />,
           url: "/SupplierList",
         },
       ],
     },
     {
       title: "Expense",
-      icon: <MdLocalAtm className="inline" />,
+      icon: <MdLocalAtm className='inline' />,
       url: "/Expense",
       subMenu: [
         {
           title: "New Expense Type",
-          icon: <MdOutlineStreetview size={16} className="inline" />,
+          icon: <MdOutlineStreetview size={16} className='inline' />,
           url: "/ExpenseTypeCreateUpdate",
         },
         {
           title: "Expense Type List",
-          icon: <MdChecklist size={16} className="inline" />,
+          icon: <MdChecklist size={16} className='inline' />,
           url: "/ExpenseTypeList",
         },
         {
           title: "New Expense",
-          icon: <MdInsertChart size={16} className="inline" />,
+          icon: <MdInsertChart size={16} className='inline' />,
           url: "/ExpenseCreateUpdate",
         },
         {
           title: "Expense List",
-          icon: <MdOutlineFormatListBulleted size={16} className="inline" />,
+          icon: <MdOutlineFormatListBulleted size={16} className='inline' />,
           url: "/ExpenseList",
         },
       ],
     },
     {
       title: "Product",
-      icon: <MdIntegrationInstructions className="inline" />,
+      icon: <MdIntegrationInstructions className='inline' />,
       url: "/Product",
       subMenu: [
         {
           title: "New Brand",
-          icon: <MdQueryStats size={16} className="inline" />,
+          icon: <MdQueryStats size={16} className='inline' />,
           url: "/BrandCreateUpdate",
         },
         {
           title: "Brand List",
-          icon: <MdOutlineFormatListBulleted size={16} className="inline" />,
+          icon: <MdOutlineFormatListBulleted size={16} className='inline' />,
           url: "/BrandList",
         },
         {
           title: "New Category",
-          icon: <MdOutlineStackedBarChart size={16} className="inline" />,
+          icon: <MdOutlineStackedBarChart size={16} className='inline' />,
           url: "/CategoryCreateUpdate",
         },
         {
           title: "Category List",
-          icon: <MdOutlineFormatListBulleted size={16} className="inline" />,
+          icon: <MdOutlineFormatListBulleted size={16} className='inline' />,
           url: "/CategoryList",
         },
         {
           title: "New Product",
-          icon: <MdOutlineCompare size={16} className="inline" />,
+          icon: <MdOutlineCompare size={16} className='inline' />,
           url: "/ProductCreateUpdate",
         },
         {
           title: "Product List",
-          icon: <MdOutlinePlaylistAddCheck size={16} className="inline" />,
+          icon: <MdOutlinePlaylistAddCheck size={16} className='inline' />,
           url: "/ProductList",
         },
       ],
     },
     {
       title: "Purchase",
-      icon: <MdShoppingCart className="inline" />,
+      icon: <MdShoppingCart className='inline' />,
       url: "/Purchase",
       subMenu: [
         {
           title: "New Purchase",
-          icon: <MdOutlineAddShoppingCart size={16} className="inline" />,
+          icon: <MdOutlineAddShoppingCart size={16} className='inline' />,
           url: "/PurchaseCreateUpdate",
         },
         {
           title: "Purchase List",
-          icon: <MdOutlineFormatListBulleted size={16} className="inline" />,
+          icon: <MdOutlineFormatListBulleted size={16} className='inline' />,
           url: "/PurchaseList",
         },
       ],
     },
     {
       title: "Sale",
-      icon: <MdShoppingBasket className="inline" />,
+      icon: <MdShoppingBasket className='inline' />,
       url: "/Sale",
       subMenu: [
         {
           title: "New Sale",
-          icon: <MdOutlineDynamicForm size={16} className="inline" />,
+          icon: <MdOutlineDynamicForm size={16} className='inline' />,
           url: "/SalesCreateUpdate",
         },
         {
           title: "Sale List",
-          icon: <MdOutlineFormatListBulleted size={16} className="inline" />,
+          icon: <MdOutlineFormatListBulleted size={16} className='inline' />,
           url: "/SalesList",
         },
       ],
     },
     {
       title: "Return",
-      icon: <MdLoop className="inline" />,
+      icon: <MdLoop className='inline' />,
       url: "/Return",
       subMenu: [
         {
           title: "New Return",
-          icon: <MdLoop size={16} className="inline" />,
+          icon: <MdLoop size={16} className='inline' />,
           url: "/ReturnCreateUpdate",
         },
         {
           title: "Return List",
-          icon: <MdOutlineFormatListBulleted size={16} className="inline" />,
+          icon: <MdOutlineFormatListBulleted size={16} className='inline' />,
           url: "/ReturnList",
         },
       ],
     },
     {
       title: "Report",
-      icon: <MdInsights className="inline" />,
+      icon: <MdInsights className='inline' />,
       url: "/Report",
       subMenu: [
         {
           title: "Sale Report",
-          icon: <MdOutlineAnalytics size={16} className="inline" />,
+          icon: <MdOutlineAnalytics size={16} className='inline' />,
           url: "/SaleReport",
         },
         {
           title: "Return Report",
-          icon: <MdOutlineBugReport size={16} className="inline" />,
+          icon: <MdOutlineBugReport size={16} className='inline' />,
           url: "/ReturnReport",
         },
         {
           title: "Purchase Report",
-          icon: <MdOutlineDonutSmall size={16} className="inline" />,
+          icon: <MdOutlineDonutSmall size={16} className='inline' />,
           url: "/PurchaseReport",
         },
         {
           title: "Expense Report",
-          icon: <MdOutlineGavel size={16} className="inline" />,
+          icon: <MdOutlineGavel size={16} className='inline' />,
           url: "/ExpenseReport",
         },
       ],
@@ -279,19 +279,19 @@ const MasterLayout = (props) => {
     <Fragment>
       {/* Top Navbar Start */}
       <div className={active ? "topNavbar active" : "topNavbar"}>
-        <nav className=" bg-[#fff] drop-shadow-md h-[50px] flex items-center">
-          <div className=" container mx-auto px-5">
-            <div className="item flex justify-between">
-              <div className="leftItems">
+        <nav className=' bg-[#fff] drop-shadow-md h-[50px] flex items-center'>
+          <div className=' container mx-auto px-5'>
+            <div className='item flex justify-between'>
+              <div className='leftItems'>
                 <MdViewHeadline
-                  className="text-[30px] text-slate-600 cursor-pointer"
+                  className='text-[30px] text-slate-600 cursor-pointer'
                   onClick={handelSideNav}
                 />
               </div>
-              <div className="rightItems flex gap-2">
-                <MdSearch className="text-[25px] text-slate-600" />
-                <MdForum className="text-[25px] text-slate-600" />
-                <MdFullscreen className="text-[25px] text-slate-600" />
+              <div className='rightItems flex gap-2'>
+                <MdSearch className='text-[25px] text-slate-600' />
+                <MdForum className='text-[25px] text-slate-600' />
+                <MdFullscreen className='text-[25px] text-slate-600' />
               </div>
             </div>
           </div>
@@ -302,24 +302,24 @@ const MasterLayout = (props) => {
 
       {/* Sidebar Start */}
       <div className={active ? "sidebar active" : "sidebar"}>
-        <div className="sidebarBody bg-[#0F172A]  fixed top-0 h-screen overflow-auto">
-          <div className="topSection flex justify-between items-center px-6 mt-5 relative">
-            <Link to={"/"} className="logo cursor-pointer block">
-              <img src={logo} alt="" />
+        <div className='sidebarBody bg-[#0F172A]  fixed top-0 h-screen overflow-auto'>
+          <div className='topSection flex justify-between items-center px-6 mt-5 relative'>
+            <Link to={"/"} className='logo cursor-pointer block'>
+              <img src={logo} alt='' />
             </Link>
-            <div className="flex gap-3">
+            <div className='flex gap-3'>
               <span>
-                <MdNotificationsActive className="text-[25px] text-slate-200 cursor-pointer" />
+                <MdNotificationsActive className='text-[25px] text-slate-200 cursor-pointer' />
               </span>
-              <span className="profileIcon cursor-pointer">
-                <MdOutlineManageAccounts className="text-[25px] text-slate-200  " />
-                <div className="profile__intro absolute pt-[20px] top-[20px] right-[20px]">
-                  <div className="   bg-[#FFFFFF]  py-6 rounded-md w-[200px]   overflow-hidden">
-                    <div className="px-5">
-                      <span className="text-sm text-slate-600 font-semibold">
+              <span className='profileIcon cursor-pointer'>
+                <MdOutlineManageAccounts className='text-[25px] text-slate-200  ' />
+                <div className='profile__intro absolute pt-[20px] top-[20px] right-[20px]'>
+                  <div className='   bg-[#FFFFFF]  py-6 rounded-md w-[200px]   overflow-hidden'>
+                    <div className='px-5'>
+                      <span className='text-sm text-slate-600 font-semibold'>
                         Sign in As
                       </span>{" "}
-                      <span className="text-xs block mt-0 text-slate-600">
+                      <span className='text-xs block mt-0 text-slate-600'>
                         amitbd599@gmail.com
                       </span>
                     </div>
@@ -328,28 +328,28 @@ const MasterLayout = (props) => {
                       <NavLink
                         to={"/"}
                         end
-                        className="flex items-center hover:bg-slate-100 px-5 py-3"
+                        className='flex items-center hover:bg-slate-100 px-5 py-3'
                       >
-                        <MdPerson className="inline text-[25px] text-slate-600" />{" "}
-                        <span className="text-[14px] mt-1 ml-1 text-slate-600">
+                        <MdPerson className='inline text-[25px] text-slate-600' />{" "}
+                        <span className='text-[14px] mt-1 ml-1 text-slate-600'>
                           Profile
                         </span>
                       </NavLink>
                       <NavLink
                         to={"/"}
                         end
-                        className="flex items-center hover:bg-slate-100 px-5 py-3"
+                        className='flex items-center hover:bg-slate-100 px-5 py-3'
                       >
-                        <MdOutlineSettings className="inline text-[25px] text-slate-600" />{" "}
-                        <span className="text-[14px] mt-1 ml-1 text-slate-600">
+                        <MdOutlineSettings className='inline text-[25px] text-slate-600' />{" "}
+                        <span className='text-[14px] mt-1 ml-1 text-slate-600'>
                           Setting
                         </span>
                       </NavLink>
                       <hr />
-                      <div className=" block cursor-pointer mt-2">
-                        <div className="block items-center hover:bg-slate-100 px-5 py-3 ">
-                          <MdPerson className="inline text-[25px] text-slate-600" />{" "}
-                          <span className="text-[14px] mt-1 ml-1 text-slate-600">
+                      <div className=' block cursor-pointer mt-2'>
+                        <div className='block items-center hover:bg-slate-100 px-5 py-3 '>
+                          <MdPerson className='inline text-[25px] text-slate-600' />{" "}
+                          <span className='text-[14px] mt-1 ml-1 text-slate-600'>
                             Sign Out
                           </span>
                         </div>
@@ -360,47 +360,47 @@ const MasterLayout = (props) => {
               </span>
             </div>
           </div>
-          <div className="profileSection mt-10">
-            <div className="profileImg flex justify-center">
+          <div className='profileSection mt-10'>
+            <div className='profileImg flex justify-center'>
               <img
-                className="rounded-full w-[100px]"
-                src="https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg"
-                alt=""
+                className='rounded-full w-[100px]'
+                src='https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg'
+                alt=''
               />
             </div>
-            <div className="flex justify-center mt-3">
-              <div className="text-center">
-                <span className="block text-slate-300 text-base">
+            <div className='flex justify-center mt-3'>
+              <div className='text-center'>
+                <span className='block text-slate-300 text-base'>
                   Brian Hughes
                 </span>
-                <span className="block text-slate-300 text-xs">
+                <span className='block text-slate-300 text-xs'>
                   hughes.brian@company.com
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="dashboardData mt-8 mb-5 px-4">
+          <div className='dashboardData mt-8 mb-5 px-4'>
             <div>
-              <span className="text-[#c084fc] font-medium text-sm block">
+              <span className='text-[#c084fc] font-medium text-sm block'>
                 DASHBOARD
               </span>
-              <span className="text-slate-300 text-xs mt-1 block">
+              <span className='text-slate-300 text-xs mt-1 block'>
                 Unique Design Dashboard.
               </span>
             </div>
             {/* Nav Items */}
-            <div className="navItems mt-5">
+            <div className='navItems mt-5'>
               <Accordion preExpanded={`${isSidebarAccordionActive()}`}>
                 {NavItems.map((item, index) => (
                   <AccordionItem key={index} uuid={index}>
                     <AccordionItemHeading>
                       <AccordionItemButton>
-                        <div className="flex items-baseline">
-                          <span className="block text-[16px] mr-2">
+                        <div className='flex items-baseline'>
+                          <span className='block text-[16px] mr-2'>
                             {item?.icon}
                           </span>
-                          <span className="block text-[13px]">
+                          <span className='block text-[13px]'>
                             {item?.title}
                           </span>
                         </div>
@@ -411,15 +411,15 @@ const MasterLayout = (props) => {
                         <NavLink
                           to={subItem?.url}
                           end
-                          activeClassName="active"
-                          className="block"
+                          activeClassName='active'
+                          className='block'
                           key={index}
                         >
-                          <div className="flex items-baseline">
-                            <span className="block text-[16px] mr-2">
+                          <div className='flex items-baseline'>
+                            <span className='block text-[16px] mr-2'>
                               {subItem?.icon}
                             </span>
-                            <span className="block text-[13px]">
+                            <span className='block text-[13px]'>
                               {subItem?.title}
                             </span>
                           </div>
@@ -437,7 +437,7 @@ const MasterLayout = (props) => {
       {/* Sidebar Start */}
 
       <div className={active ? "content active" : "content"}>
-        <div className="container mx-auto">{props.children}</div>
+        <div className='container mx-auto'>{props.children}</div>
       </div>
     </Fragment>
   );

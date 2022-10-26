@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { CustomerListRequestAPI } from "../../API/CustomerAPIRequest";
+import { ToastContainer, toast } from "react-toastify";
+import {
+  CustomerDeleteRequestAPI,
+  CustomerListRequestAPI,
+} from "../../API/CustomerAPIRequest";
 import Moment from "react-moment";
 import ReactPaginate from "react-paginate";
 import Select from "react-select";
 import { options } from "../../Helper/itemOption";
 import error from "../../Asset/Img/error.png";
 import { Link } from "react-router-dom";
+import user from "../../Asset/Img/user.png";
+import { SuccessToast } from "../../Helper/FormHelper";
+import { DeleteItems } from "../../Helper/DeleteAlert";
 const CustomerList = () => {
   let [searchKeyword, setSearchKeyword] = useState("0");
   let [perPage, setPerPage] = useState({ value: "10", label: "10 Per Page" });
-  console.log(searchKeyword);
   useEffect(() => {
     CustomerListRequestAPI(1, perPage?.value, searchKeyword);
   }, []);
@@ -22,6 +28,11 @@ const CustomerList = () => {
   const handelPageClick = async (event) => {
     CustomerListRequestAPI(event.selected + 1, perPage?.value, searchKeyword);
   };
+
+  // useEffect(() => {
+  //   handelPageClick();
+  // }, [handelPageClick()]);
+
   const perPageOnChange = async (e) => {
     setPerPage({ value: parseInt(e.value), label: e.label });
     await CustomerListRequestAPI(1, e.value, searchKeyword);
@@ -37,41 +48,49 @@ const CustomerList = () => {
     }
   };
 
+  const deleteCustomer = async (id) => {
+    let text =
+      "Do you really want to delete this account? This process cannot be undone!";
+    let deleteRequestAPI = CustomerDeleteRequestAPI;
+    let nextReturnRequestAPI = CustomerListRequestAPI;
+    await DeleteItems(id, text, deleteRequestAPI, nextReturnRequestAPI);
+  };
+
   return (
     <div>
-      <div class="bg-white p-8 rounded-md w-full">
-        <div class=" flex items-center justify-between pb-6">
+      <div class='bg-white p-8 rounded-md w-full'>
+        <div class=' flex items-center justify-between pb-6'>
           <div>
-            <h2 class="text-gray-600 font-semibold">Customer List</h2>
-            <span class="text-xs">All customer item</span>
+            <h2 class='text-gray-600 font-semibold'>Total Customer: {Total}</h2>
+            <span class='text-xs'>All customer item</span>
           </div>
-          <div class="flex items-center justify-between">
-            <div class="flex bg-gray-100 items-center p-2 rounded-md">
+          <div class='flex items-center justify-between'>
+            <div class='flex bg-gray-100 items-center p-2 rounded-md'>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+                xmlns='http://www.w3.org/2000/svg'
+                class='h-5 w-5 text-gray-400'
+                viewBox='0 0 20 20'
+                fill='currentColor'
               >
                 <path
-                  fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clip-rule="evenodd"
+                  fill-rule='evenodd'
+                  d='M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z'
+                  clip-rule='evenodd'
                 />
               </svg>
               <input
                 onChange={searchKeywordOnChange}
-                class="bg-gray-100 outline-none ml-1 block"
-                type="text"
-                name=""
-                id=""
-                placeholder="search..."
+                class='bg-gray-100 outline-none ml-1 block'
+                type='text'
+                name=''
+                id=''
+                placeholder='search...'
               />
             </div>
-            <div class="lg:ml-40 ml-10 space-x-8 flex">
-              <span className="inline">
+            <div class='lg:ml-40 ml-10 space-x-8 flex'>
+              <span className='inline'>
                 <Select
-                  className="select__color"
+                  className='select__color'
                   defaultValue={options[0]}
                   options={options}
                   onChange={perPageOnChange}
@@ -120,38 +139,41 @@ const CustomerList = () => {
                   }}
                 />
               </span>
-              <button class="bg-purple-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
-                Create
-              </button>
+              <Link
+                to={"/CustomerCreate"}
+                class='bg-purple-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer'
+              >
+                Create New
+              </Link>
             </div>
           </div>
         </div>
         <div>
-          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+          <div class='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
+            <div class='inline-block min-w-full shadow rounded-lg overflow-hidden'>
               {Total !== 0 ? (
-                <table class="min-w-full leading-normal">
+                <table class='min-w-full leading-normal'>
                   <thead>
                     <tr>
-                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th class='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                         No
                       </th>
-                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th class='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                         Create Date
                       </th>
-                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th class='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                         Image
                       </th>
-                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th class='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                         Name
                       </th>
-                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th class='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                         Phone
                       </th>
-                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th class='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                         Email
                       </th>
-                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th class='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                         Action
                       </th>
                     </tr>
@@ -159,64 +181,75 @@ const CustomerList = () => {
                   <tbody>
                     {DataList.map((item, index) => (
                       <tr key={index}>
-                        <td class="px-4 py-3 border-b border-gray-200 bg-white text-xs">
-                          <p class="text-gray-600 text-sm whitespace-no-wrap">
+                        <td class='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
+                          <p class='text-gray-600 text-sm whitespace-no-wrap'>
                             {index + 1}
                           </p>
                         </td>
-                        <td class="px-4 py-3 border-b border-gray-200 bg-white text-xs">
-                          <p class="text-gray-900 whitespace-no-wrap">
+                        <td class='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
+                          <p class='text-gray-900 whitespace-no-wrap'>
                             {/* <Moment date={item?.CreatedDate} /> */}
-                            <Moment format="DD/MM/YYYY">
+                            <Moment format='DD/MM/YYYY'>
                               {item?.CreatedDate}
                             </Moment>
                           </p>
                         </td>
-                        <td class="px-4 py-3 border-b border-gray-200 bg-white text-xs">
-                          <div class="flex items-center">
-                            <div class="flex-shrink-0 w-10 h-10">
+                        <td class='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
+                          <div class='flex items-center'>
+                            <div class='flex-shrink-0 w-10 h-10'>
                               <img
-                                class="w-full h-full rounded-full"
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                alt=""
+                                className='h-10 w-10 object-cover rounded-full'
+                                src={item?.Image === "" ? user : item?.Image}
+                                alt=''
                               />
                             </div>
                           </div>
                         </td>
-                        <td class="px-4 py-3 border-b border-gray-200 bg-white text-xs">
-                          <p class="text-gray-900 whitespace-no-wrap">
+                        <td class='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
+                          <p class='text-gray-900 whitespace-no-wrap'>
                             {item?.CustomerName}
                           </p>
                         </td>
-                        <td class="px-4 py-3 border-b border-gray-200 bg-white text-xs">
-                          <p class="text-gray-900 whitespace-no-wrap">
+                        <td class='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
+                          <p class='text-gray-900 whitespace-no-wrap'>
                             {item?.Phone}
                           </p>
                         </td>
-                        <td class="px-4 py-3 border-b border-gray-200 bg-white text-xs">
-                          <p class="text-gray-900 whitespace-no-wrap">
+                        <td class='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
+                          <p class='text-gray-900 whitespace-no-wrap'>
                             {item?.Email}
                           </p>
                         </td>
-                        <td class="px-4 py-3 border-b border-gray-200 bg-white text-xs">
-                          <div className="flex gap-2">
-                            <Link to={`/CustomerCreateUpdate?id=${item?._id}`}>
+                        <td class='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
+                          <div className='flex gap-2'>
+                            <Link to={`/CustomerUpdate/${item?._id}`}>
                               {" "}
-                              <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight cursor-pointer">
+                              <span class='relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight cursor-pointer'>
                                 <span
                                   aria-hidden
-                                  class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                                  class='absolute inset-0 bg-green-200 opacity-50 rounded-full'
                                 ></span>
-                                <span class="relative">Edit</span>
+                                <span class='relative'>Edit</span>
                               </span>
                             </Link>
 
-                            <span class="relative inline-block px-3 py-1 font-semibold text-purple-900 leading-tight cursor-pointer">
+                            <span class='relative inline-block px-3 py-1 font-semibold text-purple-900 leading-tight cursor-pointer'>
                               <span
                                 aria-hidden
-                                class="absolute inset-0 bg-purple-200 opacity-50 rounded-full"
+                                class='absolute inset-0 bg-purple-200 opacity-50 rounded-full'
                               ></span>
-                              <span class="relative">Show</span>
+                              <span class='relative'>Show</span>
+                            </span>
+
+                            <span
+                              class='relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight cursor-pointer'
+                              onClick={() => deleteCustomer(item?._id)}
+                            >
+                              <span
+                                aria-hidden
+                                class='absolute inset-0 bg-red-200 opacity-50 rounded-full'
+                              ></span>
+                              <span class='relative'>Delete</span>
                             </span>
                           </div>
                         </td>
@@ -225,26 +258,27 @@ const CustomerList = () => {
                   </tbody>
                 </table>
               ) : (
-                <div className="flex justify-center">
-                  <img className="w-[400px]" src={error} alt="" />
+                <div className='flex justify-center'>
+                  <img className='w-[400px]' src={error} alt='' />
                 </div>
               )}
 
               {Total > 9 && (
-                <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
+                <div class='pagination px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between'>
                   <ReactPaginate
-                    className="flex gap-2"
-                    previousLabel="<"
-                    nextLabel=">"
-                    pageClassName="border  hover:bg-[#A855F7] hover:text-white text-slate-700 w-[35px] h-[35px] flex justify-center items-center rounded-full"
-                    previousLinkClassName="border  hover:bg-[#A855F7] hover:text-white text-slate-700 w-[35px] h-[35px] flex justify-center items-center rounded-full"
-                    nextLinkClassName="border  hover:bg-[#A855F7] hover:text-white text-slate-700 w-[35px] h-[35px] flex justify-center items-center rounded-full"
-                    breakLabel=". . ."
+                    className='flex gap-2'
+                    previousLabel='<'
+                    nextLabel='>'
+                    pageClassName='border  hover:bg-[#A855F7] hover:text-white text-slate-700 w-[35px] h-[35px] flex justify-center items-center rounded-full'
+                    previousLinkClassName='border  hover:bg-[#A855F7] hover:text-white text-slate-700 w-[35px] h-[35px] flex justify-center items-center rounded-full'
+                    nextLinkClassName='border  hover:bg-[#A855F7] hover:text-white text-slate-700 w-[35px] h-[35px] flex justify-center items-center rounded-full'
+                    breakLabel='. . .'
                     pageCount={Total / perPage?.value}
                     pageRangeDisplayed={3}
-                    activeClassName="active   bg-[#A855F7] rounded-full"
+                    renderOnZeroPageCount={null}
+                    activeClassName='active   bg-[#A855F7] rounded-full'
                     onPageChange={handelPageClick}
-                    type="button"
+                    type='button'
                   />
                 </div>
               )}
