@@ -25,7 +25,6 @@ import ReturnCreateUpdatePage from "./Pages/Return/ReturnCreateUpdatePage";
 import ReturnListPage from "./Pages/Return/ReturnListPage";
 import SalesCreateUpdatePage from "./Pages/Sales/SalesCreateUpdatePage";
 import SalesListPage from "./Pages/Sales/SalesListPage";
-import SupplierCreateUpdatePage from "./Pages/Supplier/SupplierCreateUpdatePage";
 import SupplierListPage from "./Pages/Supplier/SupplierListPage";
 import CreatePasswordPage from "./Pages/User/CreatePasswordPage";
 import LoginPage from "./Pages/User/LoginPage";
@@ -36,13 +35,16 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import toast, { Toaster } from "react-hot-toast";
 import "animate.css";
+import SupplierCreatePage from "./Pages/Supplier/SupplierCreatePage";
+import SupplierUpdatePage from "./Pages/Supplier/SupplierUpdatePage";
 function App() {
   if (getToken()) {
     return (
       <Fragment>
         <BrowserRouter>
           <Routes>
-            <Route exact path='/' element={<DashboardPage />} />
+            <Route path='/' element={<Navigate to='/Dashboard' replace />} />
+            <Route exact path='/Dashboard' element={<DashboardPage />} />
             <Route
               exact
               path='/CustomerCreate'
@@ -50,16 +52,21 @@ function App() {
             />
             <Route
               exact
-              path='/CustomerUpdate/:id'
+              path='/CustomerList/update/:id/'
               element={<CustomerUpdatePage />}
             />
             <Route path='/CustomerList' element={<CustomerListPage />} />
             <Route
               exact
-              path='/SupplierCreateUpdate'
-              element={<SupplierCreateUpdatePage />}
+              path='/SupplierCreate'
+              element={<SupplierCreatePage />}
             />
             <Route exact path='/SupplierList' element={<SupplierListPage />} />
+            <Route
+              exact
+              path='/SupplierList/update/:id'
+              element={<SupplierUpdatePage />}
+            />
             <Route
               exact
               path='/ExpenseTypeCreateUpdate'

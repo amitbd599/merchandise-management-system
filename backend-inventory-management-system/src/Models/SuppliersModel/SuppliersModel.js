@@ -3,10 +3,11 @@ const mongoose = require("mongoose");
 const DataSchema = new mongoose.Schema(
   {
     userEmail: { type: String },
-    Name: { type: String },
+    SupplierName: { type: String },
     Phone: { type: String, unique: true },
     Email: { type: String },
     Address: { type: String },
+    Image: { type: String },
     CreatedDate: { type: Date, default: Date.now() },
   },
   { versionKey: false }

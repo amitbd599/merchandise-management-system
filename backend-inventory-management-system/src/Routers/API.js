@@ -100,7 +100,7 @@ router.get(
 
 // Customer
 router.post(
-  "/CreateCustomerService",
+  "/CreateCustomerService", 
   AuthVerifyMiddleware,
   CustomerController.CreateCustomerService
 );

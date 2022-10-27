@@ -2,18 +2,18 @@ import React, { Fragment, Suspense } from "react";
 import { lazy } from "react";
 import LazyLoader from "../../Components/MasterLayout/LazyLoader";
 import MasterLayout from "../../Components/MasterLayout/MasterLayout";
-const SupplierCreateUpdate = lazy(() =>
-  import("../../Components/Supplier/SupplierCreateUpdate")
+const SupplierCreate = lazy(() =>
+  import("../../Components/Supplier/SupplierCreate")
 );
-const SupplierCreateUpdatePage = () => {
+const SupplierCreatePage = () => {
   return (
     <Fragment>
       <MasterLayout>
         <Suspense fallback={LazyLoader}>
-          <SupplierCreateUpdate />
+          <SupplierCreate />
         </Suspense>
       </MasterLayout>
     </Fragment>
   );
 };
-export default SupplierCreateUpdatePage;
+export default SupplierCreatePage;

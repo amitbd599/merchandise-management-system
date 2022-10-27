@@ -62,6 +62,8 @@ const MasterLayout = (props) => {
     setActive(!active);
   };
   const isSidebarAccordionActive = () => {
+    let data = window.location.pathname;
+    let split = data.split("/");
     let urlList = [];
     NavItems.map((item) => {
       urlList.push(
@@ -70,26 +72,23 @@ const MasterLayout = (props) => {
         })
       );
     });
-
-    return urlList.findIndex((items) =>
-      items.includes(window.location.pathname)
+    console.log("/" + split[1]);
+    return urlList.findIndex(
+      (items) => items.includes("/" + split[1])
+      // items.includes("/" + split[1])
     );
   };
-
-  useEffect(() => {
-    isSidebarAccordionActive();
-  }, []);
 
   const NavItems = [
     {
       title: "Dashboard",
       icon: <MdDashboardCustomize className='inline' />,
-      url: "/Dashboard",
+      url: "/",
       subMenu: [
         {
           title: "Dashboard",
           icon: <MdGraphicEq size={16} className='inline' />,
-          url: "/",
+          url: "/Dashboard",
         },
         {
           title: "Analytics",
@@ -101,7 +100,7 @@ const MasterLayout = (props) => {
     {
       title: "Customer",
       icon: <MdPeople className='inline' />,
-      url: "/Customer",
+      url: "/CustomerCreate",
       subMenu: [
         {
           title: "New Customer",
@@ -118,12 +117,12 @@ const MasterLayout = (props) => {
     {
       title: "Supplier",
       icon: <MdOutlineDepartureBoard className='inline' />,
-      url: "/Supplier",
+      url: "/SupplierCreate",
       subMenu: [
         {
           title: "New Supplier",
           icon: <MdOutlineSupport size={16} className='inline' />,
-          url: "/SupplierCreateUpdate",
+          url: "/SupplierCreate",
         },
         {
           title: "Supplier List",
@@ -275,6 +274,9 @@ const MasterLayout = (props) => {
       ],
     },
   ];
+  useEffect(() => {
+    isSidebarAccordionActive();
+  }, []);
   return (
     <Fragment>
       {/* Top Navbar Start */}
@@ -410,9 +412,12 @@ const MasterLayout = (props) => {
                       {item?.subMenu?.map((subItem, index) => (
                         <NavLink
                           to={subItem?.url}
-                          end
-                          activeClassName='active'
-                          className='block'
+                          // end
+                          // activeClassName='active'
+                          // className='block'
+                          className={(navData) =>
+                            navData.isActive ? "block active " : "block"
+                          }
                           key={index}
                         >
                           <div className='flex items-baseline'>
@@ -437,7 +442,7 @@ const MasterLayout = (props) => {
       {/* Sidebar Start */}
 
       <div className={active ? "content active" : "content"}>
-        <div className='container mx-auto'>{props.children}</div>
+        <div>{props.children}</div>
       </div>
     </Fragment>
   );

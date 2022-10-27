@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Resizer from "react-image-file-resizer";
-import { CreateCustomerRequestAPI } from "../../API/CustomerAPIRequest";
+
 import { ErrorToast, IsEmail, IsEmpty } from "../../Helper/FormHelper";
 import user from "../../Asset/Img/user.png";
 import { useRef } from "react";
-const CustomerCreate = () => {
+import { CreateSupplierRequestAPI } from "../../API/SupplierAPIRequest";
+const SupplierCreate = () => {
   let { emailRef, nameRef, phoneRef, addressRef } = useRef();
   let navigate = useNavigate();
   const saveChange = async () => {
@@ -25,7 +26,7 @@ const CustomerCreate = () => {
       ErrorToast("Address is required");
     } else {
       if (
-        await CreateCustomerRequestAPI({
+        await CreateSupplierRequestAPI({
           Email,
           CustomerName,
           Phone,
@@ -33,7 +34,7 @@ const CustomerCreate = () => {
           Image,
         })
       ) {
-        navigate("/CustomerList");
+        navigate("/SupplierList");
       }
     }
   };
@@ -73,7 +74,7 @@ const CustomerCreate = () => {
         <div className='grid min-h-[calc(100vh-50px)] place-items-center bg-slate-100 px-1 lg:px-6'>
           <div className='w-11/12 p-6 lg:p-12 bg-white drop-shadow-2xl rounded-lg sm:w-8/12 md:w-1/2 lg:w-full'>
             <h1 className='text-xl font-semibold'>
-              <span className='font-medium'>Add A Customer</span>
+              <span className='font-medium'>Add New Supplier</span>
             </h1>
             <div className='mt-6'>
               <div className='block lg:flex gap-6'>
@@ -82,7 +83,7 @@ const CustomerCreate = () => {
                     for='email'
                     className='block mt-2 text-xs font-semibold text-gray-600 uppercase'
                   >
-                    Customer Name:
+                    Supplier Name:
                   </label>
                   <input
                     ref={(input) => (nameRef = input)}
@@ -181,4 +182,4 @@ const CustomerCreate = () => {
   );
 };
 
-export default CustomerCreate;
+export default SupplierCreate;

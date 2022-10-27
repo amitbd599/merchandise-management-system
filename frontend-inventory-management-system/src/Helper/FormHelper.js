@@ -12,10 +12,12 @@ class FormHelper {
     return !EmailRegx.test(value);
   }
   ErrorToast(msg) {
-    toast.error(msg);
+    toast.error(msg, {
+      position: "top-center",
+    });
   }
   SuccessToast(msg) {
-    toast.success(msg);
+    toast.success(msg, { position: "top-center" });
   }
   getBase64(file) {
     return new Promise((resolve, reject) => {
