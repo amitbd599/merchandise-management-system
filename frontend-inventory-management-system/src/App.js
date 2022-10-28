@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { getToken } from "./Helper/SessionHelper";
-import BrandCreateUpdatePage from "./Pages/Brand/BrandCreateUpdatePage";
 import BrandListPage from "./Pages/Brand/BrandListPage";
 import CategoryCreateUpdatePage from "./Pages/Category/CategoryCreateUpdatePage";
 import CategoryListPage from "./Pages/Category/CategoryListPage";
@@ -9,9 +8,8 @@ import CustomerCreatePage from "./Pages/Customer/CustomerCreatePage";
 import CustomerListPage from "./Pages/Customer/CustomerListPage";
 import CustomerUpdatePage from "./Pages/Customer/CustomerUpdatePage";
 import DashboardPage from "./Pages/Dashboard/DashboardPage";
-import ExpenseCreateUpdatePage from "./Pages/Expense/ExpenseCreateUpdatePage";
+import ExpenseCreateUpdatePage from "./Pages/Expense/ExpenseTypeUpdatePage";
 import ExpenseListPage from "./Pages/Expense/ExpenseListPage";
-import ExpenseTypeCreateUpdatePage from "./Pages/ExpenseType/ExpenseTypeCreateUpdatePage";
 import ExpenseTypeListPage from "./Pages/ExpenseType/ExpenseTypeListPage";
 import ProductCreateUpdatePage from "./Pages/Product/ProductCreateUpdatePage";
 import ProductListPage from "./Pages/Product/ProductListPage";
@@ -37,6 +35,9 @@ import toast, { Toaster } from "react-hot-toast";
 import "animate.css";
 import SupplierCreatePage from "./Pages/Supplier/SupplierCreatePage";
 import SupplierUpdatePage from "./Pages/Supplier/SupplierUpdatePage";
+import BrandCreatePage from "./Pages/Brand/BrandCreatePage";
+import ExpenseTypeCreatePage from "./Pages/Expense/ExpenseTypeCreatePage";
+import ExpenseTypeUpdatePage from "./Pages/Expense/ExpenseTypeUpdatePage";
 function App() {
   if (getToken()) {
     return (
@@ -69,8 +70,8 @@ function App() {
             />
             <Route
               exact
-              path='/ExpenseTypeCreateUpdate'
-              element={<ExpenseTypeCreateUpdatePage />}
+              path='/ExpenseTypeCreate'
+              element={<ExpenseTypeCreatePage />}
             />
             <Route
               exact
@@ -79,16 +80,17 @@ function App() {
             />
             <Route
               exact
+              path='/ExpenseTypeList/update/:id'
+              element={<ExpenseTypeUpdatePage />}
+            />
+            <Route
+              exact
               path='/ExpenseCreateUpdate'
               element={<ExpenseCreateUpdatePage />}
             />
             <Route exact path='/ExpenseList' element={<ExpenseListPage />} />
 
-            <Route
-              exact
-              path='/BrandCreateUpdate'
-              element={<BrandCreateUpdatePage />}
-            />
+            <Route exact path='/BrandCreate' element={<BrandCreatePage />} />
             <Route exact path='/BrandList' element={<BrandListPage />} />
             <Route
               exact

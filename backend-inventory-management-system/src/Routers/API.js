@@ -134,7 +134,7 @@ router.get(
 
 // ExpensesTypes
 router.post(
-  "/CreateExpensesTypesService",
+  "/CreateExpensesTypesService", 
   AuthVerifyMiddleware,
   ExpensesTypesController.CreateExpensesTypesService
 );

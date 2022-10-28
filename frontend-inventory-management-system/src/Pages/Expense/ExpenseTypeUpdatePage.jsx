@@ -2,19 +2,19 @@ import React, { Fragment, Suspense } from "react";
 import { lazy } from "react";
 import LazyLoader from "../../Components/MasterLayout/LazyLoader";
 import MasterLayout from "../../Components/MasterLayout/MasterLayout";
-const BrandCreateUpdate = lazy(() =>
-  import("../../Components/Brand/BrandCreateUpdate")
+const ExpenseTypeUpdate = lazy(() =>
+  import("../../Components/ExpenseType/ExpenseTypeUpdate")
 );
-const BrandCreateUpdatePage = () => {
+const ExpenseTypeUpdatePage = () => {
   return (
     <Fragment>
       <MasterLayout>
         <Suspense fallback={LazyLoader}>
-          <BrandCreateUpdate />
+          <ExpenseTypeUpdate />
         </Suspense>
       </MasterLayout>
     </Fragment>
   );
 };
 
-export default BrandCreateUpdatePage;
+export default ExpenseTypeUpdatePage;

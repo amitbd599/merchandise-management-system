@@ -8,7 +8,7 @@ const DataSchema = new mongoose.Schema(
     Email: { type: String },
     Address: { type: String },
     Image: { type: String },
-    CreatedDate: { type: Date, default: Date.now() },
+    CreatedDate: { type: Date, default: Date.now() }, 
   },
   { versionKey: false }
 );

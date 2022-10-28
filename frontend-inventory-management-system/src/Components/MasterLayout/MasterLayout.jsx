@@ -139,7 +139,7 @@ const MasterLayout = (props) => {
         {
           title: "New Expense Type",
           icon: <MdOutlineStreetview size={16} className='inline' />,
-          url: "/ExpenseTypeCreateUpdate",
+          url: "/ExpenseTypeCreate",
         },
         {
           title: "Expense Type List",

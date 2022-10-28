@@ -7,7 +7,7 @@ import {
   setCustomerListTotal,
   setSingleCustomer,
 } from "../Redux/State-slice/Customer-Slice";
-import { HideLoader, ShowLoader } from "../Redux/State-slice/Setting-Slice";
+import { HideLoader, ShowLoader } from "../Redux/State-slice/Setting-Slice"; 
 import store from "../Redux/Store/Store";
 
 const TokenData = { headers: { token: getToken() } };

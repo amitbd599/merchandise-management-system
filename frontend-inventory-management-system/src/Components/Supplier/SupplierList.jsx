@@ -307,7 +307,7 @@ const SupplierList = () => {
 
         {/* Single Supplier View Popup */}
         <div className={active ? "singleViewPopUp active" : "singleViewPopUp"}>
-          <div className='absolute top-0 left-0 bg-[#0f172a5b] w-full min-h-screen flex justify-center items-center'>
+          <div className='absolute top-0 left-0 bg-[#0f172a5b] w-full min-h-screen h-full flex justify-center items-center'>
             <div className='fixed mx-2 md:w-[700px] md:h-[300px] top-[50%] translate-y-[-50%] rounded-lg flex justify-center items-center'>
               <div className='md:w-[700px] md:h-[300px] bg-[#fff] rounded-lg relative flex  items-center px-5'>
                 <div className='relative md:flex  bg-white w-full gap-4'>
