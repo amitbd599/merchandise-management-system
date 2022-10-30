@@ -1,5 +1,6 @@
 import toast, { Toaster } from "react-hot-toast";
 let EmailRegx = /\S+@\S+\.\S+/;
+let NumberRegx = /^[0-9]*$/;
 let MobileRegx = /(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/;
 class FormHelper {
   IsEmpty(value) {
@@ -7,6 +8,9 @@ class FormHelper {
   }
   IsMobile(value) {
     return MobileRegx.test(value);
+  }
+  IsNumber(value) {
+    return NumberRegx.test(value);
   }
   IsEmail(value) {
     return !EmailRegx.test(value);
@@ -31,6 +35,7 @@ class FormHelper {
 export const {
   IsEmpty,
   IsMobile,
+  IsNumber,
   IsEmail,
   ErrorToast,
   getBase64,

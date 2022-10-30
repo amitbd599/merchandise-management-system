@@ -100,7 +100,7 @@ router.get(
 
 // Customer
 router.post(
-  "/CreateCustomerService", 
+  "/CreateCustomerService",
   AuthVerifyMiddleware,
   CustomerController.CreateCustomerService
 );
@@ -134,7 +134,7 @@ router.get(
 
 // ExpensesTypes
 router.post(
-  "/CreateExpensesTypesService", 
+  "/CreateExpensesTypesService",
   AuthVerifyMiddleware,
   ExpensesTypesController.CreateExpensesTypesService
 );
@@ -149,7 +149,7 @@ router.get(
   ExpensesTypesController.ExpensesTypesList
 );
 router.get(
-  "/ExpensesTypesDropdown/:id",
+  "/ExpensesTypesDropdown",
   AuthVerifyMiddleware,
   ExpensesTypesController.ExpensesTypesDropdown
 );

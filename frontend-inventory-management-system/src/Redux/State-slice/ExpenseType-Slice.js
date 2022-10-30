@@ -5,6 +5,7 @@ export const expenseType = createSlice({
     list: [],
     listTotal: 0,
     singleExpenseType: [],
+    expenseTypeDropdown: [],
   },
   reducers: {
     setExpenseTypeList: (state, action) => {
@@ -16,11 +17,15 @@ export const expenseType = createSlice({
     setSingleExpenseType: (state, action) => {
       state.singleExpenseType = action.payload;
     },
+    setExpenseTypeDropdown: (state, action) => {
+      state.expenseTypeDropdown = action.payload;
+    },
   },
 });
 export const {
   setExpenseTypeList,
   setExpenseTypeListTotal,
   setSingleExpenseType,
+  setExpenseTypeDropdown,
 } = expenseType.actions;
 export default expenseType.reducer;

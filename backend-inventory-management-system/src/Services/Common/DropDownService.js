@@ -1,8 +1,8 @@
 const Dropdown = async (request, Model, Projection) => {
   try {
-    let UserEmail = request.headers["email"];
+    let userEmail = request.headers["email"];
     let data = await Model.aggregate([
-      { $match: { UserEmail: UserEmail } },
+      { $match: { userEmail: userEmail } },
       { $project: Projection },
     ]);
 

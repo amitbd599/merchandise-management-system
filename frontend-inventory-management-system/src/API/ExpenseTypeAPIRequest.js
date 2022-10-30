@@ -3,6 +3,7 @@ import { BaseURL } from "../Helper/config";
 import { ErrorToast, SuccessToast } from "../Helper/FormHelper";
 import { getToken } from "../Helper/SessionHelper";
 import {
+  setExpenseTypeDropdown,
   setExpenseTypeList,
   setExpenseTypeListTotal,
   setSingleExpenseType,
@@ -123,6 +124,27 @@ export const ExpenseTypeUpdateRequestAPI = async (postBody, id) => {
   }
 };
 
+export const ExpenseTypeDropdownRequestAPI = async (postBody, id) => {
+  try {
+    store.dispatch(ShowLoader());
+    let URL = BaseURL + "/ExpensesTypesDropdown";
+    const result = await axios.get(URL, TokenData);
+    store.dispatch(HideLoader());
+    if (result.status === 200 && result.data["status"] === "Success") {
+      store.dispatch(setExpenseTypeDropdown(result.data["data"]));
+      return true;
+    } else {
+      store.dispatch(HideLoader());
+      ErrorToast("Something went wrong");
+      return false;
+    }
+  } catch (e) {
+    store.dispatch(HideLoader());
+    ErrorToast("Something went wrong");
+    return false;
+  }
+};
+
 export const ExpenseTypeDeleteRequestAPI = async (id) => {
   try {
     store.dispatch(ShowLoader());
@@ -143,4 +165,3 @@ export const ExpenseTypeDeleteRequestAPI = async (id) => {
     return false;
   }
 };
- 

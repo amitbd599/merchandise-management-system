@@ -149,7 +149,7 @@ const MasterLayout = (props) => {
         {
           title: "New Expense",
           icon: <MdInsertChart size={16} className='inline' />,
-          url: "/ExpenseCreateUpdate",
+          url: "/ExpenseCreate",
         },
         {
           title: "Expense List",

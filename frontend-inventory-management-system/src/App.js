@@ -8,7 +8,6 @@ import CustomerCreatePage from "./Pages/Customer/CustomerCreatePage";
 import CustomerListPage from "./Pages/Customer/CustomerListPage";
 import CustomerUpdatePage from "./Pages/Customer/CustomerUpdatePage";
 import DashboardPage from "./Pages/Dashboard/DashboardPage";
-import ExpenseCreateUpdatePage from "./Pages/Expense/ExpenseTypeUpdatePage";
 import ExpenseListPage from "./Pages/Expense/ExpenseListPage";
 import ExpenseTypeListPage from "./Pages/ExpenseType/ExpenseTypeListPage";
 import ProductCreateUpdatePage from "./Pages/Product/ProductCreateUpdatePage";
@@ -36,8 +35,9 @@ import "animate.css";
 import SupplierCreatePage from "./Pages/Supplier/SupplierCreatePage";
 import SupplierUpdatePage from "./Pages/Supplier/SupplierUpdatePage";
 import BrandCreatePage from "./Pages/Brand/BrandCreatePage";
-import ExpenseTypeCreatePage from "./Pages/Expense/ExpenseTypeCreatePage";
-import ExpenseTypeUpdatePage from "./Pages/Expense/ExpenseTypeUpdatePage";
+import ExpenseTypeUpdatePage from "./Pages/ExpenseType/ExpenseTypeUpdatePage";
+import ExpenseCreatePage from "./Pages/Expense/ExpenseCreatePage";
+import ExpenseTypeCreatePage from "./Pages/ExpenseType/ExpenseTypeCreatePage";
 function App() {
   if (getToken()) {
     return (
@@ -68,6 +68,7 @@ function App() {
               path='/SupplierList/update/:id'
               element={<SupplierUpdatePage />}
             />
+
             <Route
               exact
               path='/ExpenseTypeCreate'
@@ -83,10 +84,11 @@ function App() {
               path='/ExpenseTypeList/update/:id'
               element={<ExpenseTypeUpdatePage />}
             />
+
             <Route
               exact
-              path='/ExpenseCreateUpdate'
-              element={<ExpenseCreateUpdatePage />}
+              path='/ExpenseCreate'
+              element={<ExpenseCreatePage />}
             />
             <Route exact path='/ExpenseList' element={<ExpenseListPage />} />
 

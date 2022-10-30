@@ -2,19 +2,19 @@ import React, { Fragment, Suspense } from "react";
 import { lazy } from "react";
 import LazyLoader from "../../Components/MasterLayout/LazyLoader";
 import MasterLayout from "../../Components/MasterLayout/MasterLayout";
-const ExpenseTypeCreateUpdate = lazy(() =>
-  import("../../Components/ExpenseType/ExpenseTypeCreateUpdate")
+const ExpenseTypeCreate = lazy(() =>
+  import("../../Components/ExpenseType/ExpenseTypeCreate")
 );
-const ExpenseTypeCreateUpdatePage = () => {
+const ExpenseTypeCreatePage = () => {
   return (
     <Fragment>
       <MasterLayout>
         <Suspense fallback={LazyLoader}>
-          <ExpenseTypeCreateUpdate />
+          <ExpenseTypeCreate />
         </Suspense>
       </MasterLayout>
     </Fragment>
   );
 };
 
-export default ExpenseTypeCreateUpdatePage;
+export default ExpenseTypeCreatePage;
