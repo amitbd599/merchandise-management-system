@@ -25,7 +25,7 @@ const ExpenseList = () => {
 
   let DataList = useSelector((state) => state.expense.list);
   let Total = useSelector((state) => state.expense.listTotal);
-  debugger;
+
   const handelPageClick = async (event) => {
     ExpenseListRequestAPI(event.selected + 1, perPage?.value, searchKeyword);
   };
@@ -63,6 +63,7 @@ const ExpenseList = () => {
   };
 
   const singleExpenseData = useSelector((state) => state.expense.singleExpense);
+  console.log(DataList);
 
   return (
     <div className='bg-white relative'>
@@ -178,6 +179,9 @@ const ExpenseList = () => {
                           TypeID
                         </th>
                         <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
+                          Expense Type
+                        </th>
+                        <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                           Amount
                         </th>
                         <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
@@ -207,7 +211,12 @@ const ExpenseList = () => {
                           </td>
                           <td className='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
                             <p className='text-gray-900 whitespace-no-wrap'>
-                              {item?.TypeID}
+                              {item?.TypeID?.value}
+                            </p>
+                          </td>
+                          <td className='px-4 py-3 border-b border-gray-200 bg-white text-xs'>
+                            <p className='text-gray-900 whitespace-no-wrap'>
+                              {item?.TypeID?.label}
                             </p>
                           </td>
                           <td className='px-4 py-3 border-b border-gray-200 bg-white text-xs'>

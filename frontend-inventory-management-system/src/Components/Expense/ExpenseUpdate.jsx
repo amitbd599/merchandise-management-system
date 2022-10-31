@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CreateExpenseRequestAPI } from "../../API/ExpenseAPIRequest";
 import { ErrorToast, IsEmpty, IsNumber } from "../../Helper/FormHelper";
 import Select from "react-select";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import {
+  ExpenseUpdateRequestAPI,
+  ExpenseDetailsByID,
+} from "../../API/ExpenseAPIRequest";
 import { ExpenseTypeDropdownRequestAPI } from "../../API/ExpenseTypeAPIRequest";
-const ExpenseCreate = () => {
+const ExpenseUpdate = () => {
+  let params = useParams();
   let { amountRef, noteRef } = useRef();
   let navigate = useNavigate();
+
   const saveChange = async () => {
     let TypeID = {
       label: `${selectedOption?.label}`,
@@ -24,11 +30,15 @@ const ExpenseCreate = () => {
     } else if (IsEmpty(Note)) {
       ErrorToast("Note is required");
     } else {
-      await CreateExpenseRequestAPI({
-        TypeID,
-        Amount,
-        Note,
-      }).then((result) => {
+      debugger;
+      await ExpenseUpdateRequestAPI(
+        {
+          TypeID,
+          Amount,
+          Note,
+        },
+        params?.id
+      ).then((result) => {
         if (result === true) {
           navigate("/ExpenseList");
         }
@@ -38,6 +48,9 @@ const ExpenseCreate = () => {
 
   useEffect(() => {
     (async () => {
+      await ExpenseDetailsByID(params?.id);
+    })();
+    (async () => {
       await ExpenseTypeDropdownRequestAPI();
     })();
   }, []);
@@ -45,27 +58,29 @@ const ExpenseCreate = () => {
   const ExpenseTypeDropdown = useSelector(
     (state) => state.expenseType.expenseTypeDropdown
   );
+  const singleExpenseData = useSelector((state) => state.expense.singleExpense);
 
-  const [selectedOption, setSelectedOption] = useState({
-    value: "",
-    label: "",
-  });
-  const handleChange = (selectedOptionData) => {
-    setSelectedOption(selectedOptionData);
-  };
+  const [selectedOption, setSelectedOption] = useState("");
+
+  useEffect(() => {
+    setSelectedOption({
+      value: `${singleExpenseData.TypeID?.value}`,
+      label: `${singleExpenseData.TypeID?.label}`,
+    });
+  }, [singleExpenseData]);
 
   const size = [];
   ExpenseTypeDropdown.forEach((items, index) => {
     size.push({ value: `${items?._id}`, label: `${items?.ExpenseName}` });
   });
-
+  console.log(singleExpenseData?.Amount);
   return (
     <div className='bg-slate-100'>
       <div className='container mx-auto '>
         <div className='grid min-h-[calc(100vh-50px)] place-items-center bg-slate-100 px-1 lg:px-6'>
           <div className='w-11/12 p-6 lg:p-12 bg-white drop-shadow-2xl rounded-lg sm:w-8/12 md:w-1/2 lg:w-full'>
             <h1 className='text-xl font-semibold'>
-              <span className='font-medium'>Add New Expense</span>
+              <span className='font-medium'>Edit Expense</span>
             </h1>
             <div className='mt-6'>
               <div className='block lg:flex gap-6'>
@@ -78,9 +93,9 @@ const ExpenseCreate = () => {
                   </label>
                   <Select
                     className='block rounded-md w-full  py-2 mt-0 text-gray-700  appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner'
-                    // defaultValue={size[0]}
+                    value={selectedOption}
                     options={size}
-                    onChange={handleChange}
+                    onChange={(item) => setSelectedOption(item)}
                     styles={{
                       option: (provided, state) => ({
                         ...provided,
@@ -132,7 +147,10 @@ const ExpenseCreate = () => {
                   >
                     Expense Amount:
                   </label>
+
                   <input
+                    defaultValue={singleExpenseData?.Amount || ""}
+                    key={singleExpenseData?.Amount}
                     ref={(input) => (amountRef = input)}
                     type='text'
                     className='block px-3 py-2 mt-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none  focus:shadow-inner  '
@@ -148,6 +166,8 @@ const ExpenseCreate = () => {
                     Expense Note:
                   </label>
                   <textarea
+                    defaultValue={singleExpenseData?.Note}
+                    key={singleExpenseData?.Note}
                     ref={(input) => (noteRef = input)}
                     id='message'
                     rows='4'
@@ -172,4 +192,4 @@ const ExpenseCreate = () => {
   );
 };
 
-export default ExpenseCreate;
+export default ExpenseUpdate;

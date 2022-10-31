@@ -38,6 +38,7 @@ import BrandCreatePage from "./Pages/Brand/BrandCreatePage";
 import ExpenseTypeUpdatePage from "./Pages/ExpenseType/ExpenseTypeUpdatePage";
 import ExpenseCreatePage from "./Pages/Expense/ExpenseCreatePage";
 import ExpenseTypeCreatePage from "./Pages/ExpenseType/ExpenseTypeCreatePage";
+import ExpenseUpdatePage from "./Pages/Expense/ExpenseUpdatePage";
 function App() {
   if (getToken()) {
     return (
@@ -91,6 +92,11 @@ function App() {
               element={<ExpenseCreatePage />}
             />
             <Route exact path='/ExpenseList' element={<ExpenseListPage />} />
+            <Route
+              exact
+              path='/ExpenseList/update/:id'
+              element={<ExpenseUpdatePage />}
+            />
 
             <Route exact path='/BrandCreate' element={<BrandCreatePage />} />
             <Route exact path='/BrandList' element={<BrandListPage />} />
