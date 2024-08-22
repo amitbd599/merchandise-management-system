@@ -3,7 +3,10 @@ const UpdateService = async (Request, DataModel) => {
         let UserEmail = Request.headers['email'];
         let id = Request.params.id;
         let PostBody = Request.body;
-        let data = await DataModel.updateOne({ _id: id, UserEmail: UserEmail }, PostBody);
+        let data = await DataModel.updateOne(
+            { _id: id, UserEmail: UserEmail }, PostBody);
+
+
         return { status: "success", data: data }
     }
     catch (error) {
