@@ -86,12 +86,13 @@ router.get("/ExpenseDetailsByID/:id", AuthVerifyMiddleware, ExpensesController.E
 router.post("/CreateProducts", AuthVerifyMiddleware, ProductsController.CreateProducts);
 router.post("/UpdateProducts/:id", AuthVerifyMiddleware, ProductsController.UpdateProducts);
 router.get("/ProductsList/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ProductsController.ProductsList);
-router.get("/DeleteProduct/:id", AuthVerifyMiddleware, ProductsController.DeleteProduct);
+router.delete("/DeleteProduct/:id", AuthVerifyMiddleware, ProductsController.DeleteProduct);
 router.get("/ProductsDetailsByID/:id", AuthVerifyMiddleware, ProductsController.ProductsDetailsByID);
 router.get("/ProductsDropDown", AuthVerifyMiddleware, ProductsController.ProductsDropDown);
 
 
 //Purchases
+//!
 router.post("/CreatePurchases", AuthVerifyMiddleware, PurchasesController.CreatePurchases);
 router.get("/PurchasesList/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, PurchasesController.PurchasesList);
 router.get("/PurchasesDelete/:id", AuthVerifyMiddleware, PurchasesController.PurchasesDelete);
