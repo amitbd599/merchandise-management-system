@@ -59,6 +59,7 @@ router.get("/CustomersDetailsByID/:id", AuthVerifyMiddleware, CustomersControlle
 // Suppliers
 router.post("/CreateSuppliers", AuthVerifyMiddleware, SuppliersController.CreateSuppliers);
 router.post("/UpdateSuppliers/:id", AuthVerifyMiddleware, SuppliersController.UpdateSuppliers);
+//! 
 router.get("/SuppliersList/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, SuppliersController.SuppliersList);
 router.get("/SuppliersDropDown", AuthVerifyMiddleware, SuppliersController.SuppliersDropDown);
 router.get("/DeleteSupplier/:id", AuthVerifyMiddleware, SuppliersController.DeleteSupplier);
