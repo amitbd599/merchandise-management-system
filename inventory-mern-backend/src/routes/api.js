@@ -70,7 +70,7 @@ router.post("/CreateExpenseTypes", AuthVerifyMiddleware, ExpenseTypesController.
 router.post("/UpdateExpenseTypes/:id", AuthVerifyMiddleware, ExpenseTypesController.UpdateExpenseTypes);
 router.get("/ExpenseTypesList/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpenseTypesController.ExpenseTypesList);
 router.get("/ExpenseTypesDropDown", AuthVerifyMiddleware, ExpenseTypesController.ExpenseTypesDropDown);
-router.get("/DeleteExpenseTypes/:id", AuthVerifyMiddleware, ExpenseTypesController.DeleteExpenseTypes);
+router.delete("/DeleteExpenseTypes/:id", AuthVerifyMiddleware, ExpenseTypesController.DeleteExpenseTypes);
 router.get("/ExpenseTypesDetailsByID/:id", AuthVerifyMiddleware, ExpenseTypesController.ExpenseTypesDetailsByID);
 
 
