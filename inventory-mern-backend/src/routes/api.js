@@ -78,7 +78,7 @@ router.get("/ExpenseTypesDetailsByID/:id", AuthVerifyMiddleware, ExpenseTypesCon
 router.post("/CreateExpenses", AuthVerifyMiddleware, ExpensesController.CreateExpenses);
 router.post("/UpdateExpenses/:id", AuthVerifyMiddleware, ExpensesController.UpdateExpenses);
 router.get("/ExpensesList/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpensesController.ExpensesList);
-router.get("/DeleteExpense/:id", AuthVerifyMiddleware, ExpensesController.DeleteExpense);
+router.delete("/DeleteExpense/:id", AuthVerifyMiddleware, ExpensesController.DeleteExpense);
 router.get("/ExpenseDetailsByID/:id", AuthVerifyMiddleware, ExpensesController.ExpenseDetailsByID);
 
 
