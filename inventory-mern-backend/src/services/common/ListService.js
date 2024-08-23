@@ -8,6 +8,7 @@ const ListService = async (Request, DataModel, SearchArray) => {
 
         let skipRow = (pageNo - 1) * perPage;
 
+
         let data;
 
         if (searchValue !== "0") {
