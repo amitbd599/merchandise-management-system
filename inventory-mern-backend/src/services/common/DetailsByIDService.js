@@ -12,11 +12,7 @@ const DetailsByIDService = async (Request, DataModel) => {
 
 
         let data = await DataModel.aggregate([
-
-
             { $match: QueryObject }
-
-
         ])
         return { status: "success", data: data }
     }
