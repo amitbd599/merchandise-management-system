@@ -101,15 +101,15 @@ router.delete("/PurchasesDelete/:id", AuthVerifyMiddleware, PurchasesController.
 //Sales
 router.post("/CreateSales", AuthVerifyMiddleware, SalesController.CreateSales);
 router.get("/SalesList/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, SalesController.SalesList);
-router.get("/SaleDelete/:id", AuthVerifyMiddleware, SalesController.SaleDelete);
+router.delete("/SaleDelete/:id", AuthVerifyMiddleware, SalesController.SaleDelete);
 
 
 //Return
 router.post("/CreateReturns", AuthVerifyMiddleware, ReturnsController.CreateReturns);
 router.get("/ReturnsList/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ReturnsController.ReturnsList);
-router.get("/ReturnDelete/:id", AuthVerifyMiddleware, ReturnsController.ReturnDelete);
+router.delete("/ReturnDelete/:id", AuthVerifyMiddleware, ReturnsController.ReturnDelete);
 
-
+//! 
 //Report
 router.post("/ExpensesByDate", AuthVerifyMiddleware, ReportController.ExpensesByDate);
 router.post("/ReturnByDate", AuthVerifyMiddleware, ReportController.ReturnByDate);
