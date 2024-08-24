@@ -1,8 +1,8 @@
 import store from "../redux/store/store";
-import {HideLoader, ShowLoader} from "../redux/state-slice/settings-slice";
+import { HideLoader, ShowLoader } from "../redux/state-slice/settings-slice";
 import axios from "axios";
-import {ErrorToast, SuccessToast} from "../helper/FormHelper";
-import {getToken} from "../helper/SessionHelper";
+import { ErrorToast, SuccessToast } from "../helper/FormHelper";
+import { getToken } from "../helper/SessionHelper";
 import {
     OnChangeProductInput,
     ResetProductFormValue,
@@ -11,16 +11,16 @@ import {
     SetProductList,
     SetProductListTotal
 } from "../redux/state-slice/product-slice";
-import {BaseURL} from "../helper/config";
-import {OnChangeExpenseInput} from "../redux/state-slice/expense-slice";
+import { BaseURL } from "../helper/config";
+import { OnChangeExpenseInput } from "../redux/state-slice/expense-slice";
 
-const AxiosHeader={headers:{"token":getToken()}}
+const AxiosHeader = { headers: { "token": getToken() } }
 
 export async function ProductListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/ProductsList/"+pageNo+"/"+perPage+"/"+searchKeyword;
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/ProductsList/" + pageNo + "/" + perPage + "/" + searchKeyword;
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'][0]['Rows'].length > 0) {
@@ -47,19 +47,19 @@ export async function ProductListRequest(pageNo, perPage, searchKeyword) {
 
 
 
-export async function CreateProductRequest(PostBody,ObjectID) {
+export async function CreateProductRequest(PostBody, ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CreateProducts"
-        if(ObjectID!==0){
-            URL = BaseURL+"/UpdateProducts/"+ObjectID;
+        let URL = BaseURL + "/CreateProducts"
+        if (ObjectID !== 0) {
+            URL = BaseURL + "/UpdateProducts/" + ObjectID;
         }
-        const result = await axios.post(URL,PostBody,AxiosHeader)
+        const result = await axios.post(URL, PostBody, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             SuccessToast("Request Successful");
             store.dispatch(ResetProductFormValue())
-            return  true;
+            return true;
         }
         else {
             ErrorToast("Request Fail ! Try Again")
@@ -69,7 +69,7 @@ export async function CreateProductRequest(PostBody,ObjectID) {
     catch (e) {
         ErrorToast("Something Went Wrong")
         store.dispatch(HideLoader())
-        return  false
+        return false
     }
 }
 
@@ -77,28 +77,28 @@ export async function CreateProductRequest(PostBody,ObjectID) {
 export async function FillProductFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/ProductsDetailsByID/"+ObjectID;
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/ProductsDetailsByID/" + ObjectID;
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
-            let FormValue=result.data['data'][0];
-            store.dispatch(OnChangeProductInput({Name:"CategoryID",Value:FormValue['CategoryID']}));
-            store.dispatch(OnChangeProductInput({Name:"BrandID",Value:FormValue['BrandID']}));
-            store.dispatch(OnChangeProductInput({Name:"Name",Value:FormValue['Name']}));
-            store.dispatch(OnChangeProductInput({Name:"Unit",Value:FormValue['Unit']}));
-            store.dispatch(OnChangeProductInput({Name:"Details",Value:FormValue['Details']}));
-            return  true;
+            let FormValue = result.data['data'][0];
+            store.dispatch(OnChangeProductInput({ Name: "CategoryID", Value: FormValue['CategoryID'] }));
+            store.dispatch(OnChangeProductInput({ Name: "BrandID", Value: FormValue['BrandID'] }));
+            store.dispatch(OnChangeProductInput({ Name: "Name", Value: FormValue['Name'] }));
+            store.dispatch(OnChangeProductInput({ Name: "Unit", Value: FormValue['Unit'] }));
+            store.dispatch(OnChangeProductInput({ Name: "Details", Value: FormValue['Details'] }));
+            return true;
         } else {
-            debugger;
+
             ErrorToast("Request Fail ! Try Again")
             return false;
         }
     }
     catch (e) {
-        debugger;
+
         ErrorToast("Something Went Wrong")
         store.dispatch(HideLoader())
-        return  false
+        return false
     }
 }
 
@@ -106,8 +106,8 @@ export async function FillProductFormRequest(ObjectID) {
 export async function ProductCategoryDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/CategoriesDropDown";
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/CategoriesDropDown";
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'].length > 0) {
@@ -131,8 +131,8 @@ export async function ProductCategoryDropDownRequest() {
 export async function ProductBrandDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/BrandDropDown";
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/BrandDropDown";
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'].length > 0) {
@@ -156,16 +156,16 @@ export async function ProductBrandDropDownRequest() {
 export async function DeleteProductRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/DeleteProduct/"+ObjectID;
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/DeleteProduct/" + ObjectID;
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader());
         if (result.status === 200 && result.data['status'] === "associate") {
             ErrorToast(result.data['data'])
-            return  false;
+            return false;
         }
         else if (result.status === 200 && result.data['status'] === "success") {
             SuccessToast("Request Successful");
-            return  true
+            return true
         }
         else {
             ErrorToast("Request Fail ! Try Again")
@@ -175,6 +175,6 @@ export async function DeleteProductRequest(ObjectID) {
     catch (e) {
         ErrorToast("Something Went Wrong")
         store.dispatch(HideLoader())
-        return  false
+        return false
     }
 }

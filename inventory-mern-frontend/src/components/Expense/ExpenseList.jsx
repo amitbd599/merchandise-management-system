@@ -22,7 +22,7 @@ const ExpenseList = () => {
     let Total=useSelector((state)=>(state.expense.ListTotal))
 
     const handlePageClick = async (event) => {
-        debugger;
+        
         await ExpenseListRequest(event.selected + 1, perPage, searchKeyword)
     };
 
