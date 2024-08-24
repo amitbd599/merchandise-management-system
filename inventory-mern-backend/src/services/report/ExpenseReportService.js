@@ -6,7 +6,10 @@ const ExpenseReportService = async (Request) => {
         let ToDate = Request.body['ToDate']
 
         let data = await ExpensesModel.aggregate([
-            { $match: { UserEmail: UserEmail, CreatedDate: { $gte: new Date(FormDate), $lte: new Date(ToDate) } } },
+            {
+                $match: { UserEmail: UserEmail, CreatedDate: { $gte: new Date(FormDate), $lte: new Date(ToDate) } }
+
+            },
             {
                 $facet: {
                     Total: [{
