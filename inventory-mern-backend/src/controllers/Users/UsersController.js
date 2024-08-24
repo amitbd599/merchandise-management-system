@@ -15,7 +15,7 @@ exports.Registration = async (req, res) => {
 }
 
 exports.Login = async (req, res) => {
-    let Result = await UserLoginService(req, DataModel)
+    let Result = await UserLoginService(req, DataModel, res)
     res.status(200).json(Result)
 }
 

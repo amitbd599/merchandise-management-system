@@ -1,6 +1,6 @@
 const CreateToken = require("../../utility/CreateToken");
 
-const UserLoginService = async (Request, DataModel) => {
+const UserLoginService = async (Request, DataModel, Res) => {
     try {
 
         let matchingStage = { $match: Request.body }
@@ -14,6 +14,15 @@ const UserLoginService = async (Request, DataModel) => {
         )
         if (data.length > 0) {
             let token = await CreateToken(data[0]['email'])
+            let options = {
+                maxAge: process.env.Cookie_Expire_Time,
+                httpOnly: true,
+                sameSite: 'none',
+                secure: true,
+            };
+
+            // Set cookie
+            Res.cookie("token", token, options);
             return { status: "success", token: token, data: data[0] }
         }
         else {
