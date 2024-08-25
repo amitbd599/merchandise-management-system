@@ -1,17 +1,17 @@
 import store from "../redux/store/store";
-import {HideLoader, ShowLoader} from "../redux/state-slice/settings-slice";
+import { HideLoader, ShowLoader } from "../redux/state-slice/settings-slice";
 import axios from "axios";
-import {ErrorToast, SuccessToast} from "../helper/FormHelper";
-import {getToken} from "../helper/SessionHelper";
-import {SetCategoryList, SetCategoryListTotal,ResetCategoryFormValue,OnChangeCategoryInput} from "../redux/state-slice/category-slice";
-import {BaseURL} from "../helper/config";
-const AxiosHeader={headers:{"token":getToken()}}
+import { ErrorToast, SuccessToast } from "../helper/FormHelper";
+import { getToken } from "../helper/SessionHelper";
+import { SetCategoryList, SetCategoryListTotal, ResetCategoryFormValue, OnChangeCategoryInput } from "../redux/state-slice/category-slice";
+import { BaseURL } from "../helper/config";
+const AxiosHeader = { headers: { "token": getToken() } }
 
 export async function CategoryListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CategoriesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/CategoriesList/" + pageNo + "/" + perPage + "/" + searchKeyword;
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'][0]['Rows'].length > 0) {
@@ -32,22 +32,22 @@ export async function CategoryListRequest(pageNo, perPage, searchKeyword) {
     }
 }
 
-export async function CreateCategoryRequest(PostBody,ObjectID) {
+export async function CreateCategoryRequest(PostBody, ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CreateCategories"
-        if(ObjectID!==0){
-            URL = BaseURL+"/UpdateCategories/"+ObjectID;
+        let URL = BaseURL + "/CreateCategories"
+        if (ObjectID !== 0) {
+            URL = BaseURL + "/UpdateCategories/" + ObjectID;
         }
-        const result = await axios.post(URL,PostBody,AxiosHeader)
+        const result = await axios.post(URL, PostBody, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             SuccessToast("Request Successful");
             store.dispatch(ResetCategoryFormValue())
-            return  true;
+            return true;
         }
-        else if(result.status === 200 && result.data['status'] === "fail") {
-            if(result.data['data']['keyPattern']['Name']===1){
+        else if (result.status === 200 && result.data['status'] === "fail") {
+            if (result.data['data']['keyPattern']['Name'] === 1) {
                 ErrorToast("Category Already Exist")
                 return false;
             }
@@ -60,7 +60,7 @@ export async function CreateCategoryRequest(PostBody,ObjectID) {
     catch (e) {
         ErrorToast("Something Went Wrong")
         store.dispatch(HideLoader())
-        return  false
+        return false
     }
 }
 
@@ -70,13 +70,13 @@ export async function CreateCategoryRequest(PostBody,ObjectID) {
 export async function FillCategoryFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CategoriesDetailsByID/"+ObjectID;
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/CategoriesDetailsByID/" + ObjectID;
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
-            let FormValue=result.data['data'][0];
-            store.dispatch(OnChangeCategoryInput({Name:"Name",Value:FormValue['Name']}));
-            return  true;
+            let FormValue = result.data['data'][0];
+            store.dispatch(OnChangeCategoryInput({ Name: "Name", Value: FormValue['Name'] }));
+            return true;
         } else {
             ErrorToast("Request Fail ! Try Again")
             return false;
@@ -85,7 +85,7 @@ export async function FillCategoryFormRequest(ObjectID) {
     catch (e) {
         ErrorToast("Something Went Wrong")
         store.dispatch(HideLoader())
-        return  false
+        return false
     }
 }
 
@@ -94,16 +94,16 @@ export async function FillCategoryFormRequest(ObjectID) {
 export async function DeleteCategoryRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/DeleteCategories/"+ObjectID;
-        let result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/DeleteCategories/" + ObjectID;
+        let result = await axios.delete(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "associate") {
             ErrorToast(result.data['data'])
-            return  false;
+            return false;
         }
         if (result.status === 200 && result.data['status'] === "success") {
             SuccessToast("Request Successful");
-            return  true
+            return true
         }
         else {
             ErrorToast("Request Fail ! Try Again")
@@ -113,7 +113,7 @@ export async function DeleteCategoryRequest(ObjectID) {
     catch (e) {
         ErrorToast("Something Went Wrong")
         store.dispatch(HideLoader())
-        return  false
+        return false
     }
 }
 

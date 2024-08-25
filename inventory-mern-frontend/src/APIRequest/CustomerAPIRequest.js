@@ -99,7 +99,7 @@ export async function DeleteCustomerRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
         let URL = BaseURL + "/DeleteCustomer/" + ObjectID;
-        const result = await axios.get(URL, AxiosHeader)
+        const result = await axios.delete(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "associate") {
             ErrorToast(result.data['data'])

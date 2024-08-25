@@ -1,6 +1,6 @@
 import React, { Fragment, useRef } from 'react';
 import { Accordion, Container, Navbar } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {AiOutlineBank, AiOutlineLogout, AiOutlineMenu, AiOutlineUser} from 'react-icons/ai';
 import {BsBagPlus, BsBagX, BsBox, BsCartPlus, BsCircle, BsGraphUp, BsPeople} from 'react-icons/bs';
 import {AiOutlineUnorderedList, IoCreateOutline, RiDashboardLine, TbTruckDelivery} from 'react-icons/all';
@@ -257,7 +257,7 @@ const MasterLayout = (props) => {
 
             <Navbar.Brand>
               <div ref={(div) => {topNavRef = div}} className="top-nav-open">
-                <h4 className="text-white m-0 p-0"><a onClick={MenuBarClickHandler}><AiOutlineMenu /></a></h4>
+                <h4 className="text-white m-0 p-0"><Link onClick={MenuBarClickHandler} to='#'><AiOutlineMenu /></Link></h4>
               </div>
             </Navbar.Brand>
 
