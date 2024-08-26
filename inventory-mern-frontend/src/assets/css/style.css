@@ -131,6 +131,7 @@ td div {
 .form-control-sm,
 .form-select-sm {
   padding: 10px 20px;
+  font-size: 15px;
 }
 
 .form-select:focus,
@@ -144,4 +145,22 @@ td div {
 
 .content {
   padding-top: 20px;
+}
+.pagination {
+  gap: 6px;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: var(--bg-color);
+  border-color: var(--bg-color);
+}
+
+.page-link:focus {
+  z-index: 3;
+  color: var(--bg-color);
+  background-color: #e9ecef;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem var(--bg-color);
 }

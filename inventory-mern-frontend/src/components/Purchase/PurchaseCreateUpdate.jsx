@@ -71,65 +71,7 @@ const PurchaseCreateUpdate = () => {
         <Fragment>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-12 col-md-4 col-lg-4 mb-3">
-                        <div className="card h-100">
-                            <div className="card-body">
-                                <div className="row">
-                                    <h5 >Create Purchase</h5>
-                                    <hr className="bg-light"/>
-                                    <div className="col-12 p-1">
-                                        <label className="form-label">Supplier</label>
-                                        <select onChange={(e)=>{store.dispatch(OnChangePurchaseInput({Name:"SupplierID",Value:e.target.value}))}} className="form-select form-select-sm">
-                                            <option value="">Select Supplier</option>
-                                            {
-                                                SupplierDropDown.map((item,i)=>{
-                                                    return( <option key={i.toLocaleString()} value={item._id}>{item.Name}</option>)
-                                                })
-                                            }
-                                        </select>
-                                    </div>
 
-                                    <div className="col-12 p-1">
-                                        <label className="form-label">Vat/Tax</label>
-                                        <input onChange={(e)=>{store.dispatch(OnChangePurchaseInput({Name:"VatTax",Value:e.target.value}))}} className="form-control form-control-sm" type="number"/>
-                                    </div>
-
-                                    <div className="col-12 p-1">
-                                        <label className="form-label">Discount</label>
-                                        <input onChange={(e)=>{store.dispatch(OnChangePurchaseInput({Name:"Discount",Value:e.target.value}))}} className="form-control form-control-sm" type="number"/>
-                                    </div>
-
-                                    <div className="col-12 p-1">
-                                        <label className="form-label">Other Cost</label>
-                                        <input  onChange={(e)=>{store.dispatch(OnChangePurchaseInput({Name:"OtherCost",Value:e.target.value}))}} className="form-control form-control-sm" type="number"/>
-                                    </div>
-
-                                    <div className="col-12 p-1">
-                                        <label className="form-label">Shipping Cost</label>
-                                        <input onChange={(e)=>{store.dispatch(OnChangePurchaseInput({Name:"ShippingCost",Value:e.target.value}))}}  className="form-control form-control-sm" type="number"/>
-                                    </div>
-
-                                    <div className="col-12 p-1">
-                                        <label className="form-label">Grand Total</label>
-                                        <input onChange={(e)=>{store.dispatch(OnChangePurchaseInput({Name:"GrandTotal",Value:e.target.value}))}}  className="form-control form-control-sm" type="number"/>
-                                    </div>
-
-
-                                    <div className="col-12 p-1">
-                                        <label className="form-label">Note</label>
-                                        <input  onChange={(e)=>{store.dispatch(OnChangePurchaseInput({Name:"Note",Value:e.target.value}))}}  className="form-control form-control-sm" type="number"/>
-                                    </div>
-
-
-                                </div>
-                                <div className="row">
-                                    <div className="col-4 p-2">
-                                        <button onClick={CreateNewPurchase} className="btn btn-sm my-3 btn-success">Create</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div className="col-12 col-md-8 col-lg-8 mb-3">
                         <div className="card  h-100">
                             <div className="card-body">
@@ -194,6 +136,65 @@ const PurchaseCreateUpdate = () => {
                                 </div>
 
 
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-12 col-md-4 col-lg-4 mb-3">
+                        <div className="card h-100">
+                            <div className="card-body">
+                                <div className="row">
+                                    <h5 >Create Purchase</h5>
+                                    <hr className="bg-light" />
+                                    <div className="col-12 p-1">
+                                        <label className="form-label">Supplier</label>
+                                        <select onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "SupplierID", Value: e.target.value })) }} className="form-select form-select-sm">
+                                            <option value="">Select Supplier</option>
+                                            {
+                                                SupplierDropDown.map((item, i) => {
+                                                    return (<option key={i.toLocaleString()} value={item._id}>{item.Name}</option>)
+                                                })
+                                            }
+                                        </select>
+                                    </div>
+
+                                    <div className="col-12 p-1">
+                                        <label className="form-label">Vat/Tax</label>
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "VatTax", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
+                                    </div>
+
+                                    <div className="col-12 p-1">
+                                        <label className="form-label">Discount</label>
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "Discount", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
+                                    </div>
+
+                                    <div className="col-12 p-1">
+                                        <label className="form-label">Other Cost</label>
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "OtherCost", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
+                                    </div>
+
+                                    <div className="col-12 p-1">
+                                        <label className="form-label">Shipping Cost</label>
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "ShippingCost", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
+                                    </div>
+
+                                    <div className="col-12 p-1">
+                                        <label className="form-label">Grand Total</label>
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "GrandTotal", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
+                                    </div>
+
+
+                                    <div className="col-12 p-1">
+                                        <label className="form-label">Note</label>
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "Note", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
+                                    </div>
+
+
+                                </div>
+                                <div className="row">
+                                    <div className="col-4 p-2">
+                                        <button onClick={CreateNewPurchase} className="btn btn-sm my-3 btn-success">Create</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -25,7 +25,7 @@
   border-radius: 50%;
   width: 85px ;
   height: 85px ;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .logo {
