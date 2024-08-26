@@ -17,10 +17,13 @@ const  Login = () => {
         } else if (IsEmpty(pass)) {
             ErrorToast("Password Required")
         } else {
-          let result= await LoginRequest(email, pass)
-           if(result) {
-               window.location.href="/"
-           }
+          await LoginRequest(email, pass).then((res)=>{
+            
+            if(res) {
+                window.location.href="/"
+            }
+          })
+           
         }
     }
 

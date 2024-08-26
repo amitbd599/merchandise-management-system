@@ -4,22 +4,40 @@
 @import 'progress.css';
 @import 'modal.css';
 @import 'dropdownmenu.css';
+
 body {
-  background: var(--bs-gray-100);
+
   font-size: 14px;
   font-family: 'Poppins', sans-serif !important;
 }
-h1, h2, h3, h4, h5, h6,p,b,i ,label,button, input, textarea,span {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+b,
+i,
+label,
+button,
+input,
+textarea,
+span {
   font-family: 'Poppins', sans-serif !important;
   font-weight: 400;
 }
+
 a {
   font-family: 'Poppins', sans-serif !important;
   cursor: pointer !important;
 }
+
 .border-radius-0 {
   border-radius: 0 !important;
 }
+
 .recharts-text {
   color: var(--bs-gray-200);
   font-weight: 300;
@@ -27,8 +45,8 @@ a {
   font-family: 'Poppins', sans-serif !important;
 }
 
-.table-section{
-  height: 55vh!important;
+.table-section {
+  height: 55vh !important;
   overflow-y: auto;
   scrollbar-color: var(--bs-gray-500) var(--bs-light) !important;
   scrollbar-width: thin !important;
@@ -37,11 +55,57 @@ a {
 table {
   width: 100%;
 }
+
 td {
   white-space: nowrap;
 }
+
 td div {
   white-space: normal;
   word-break: break-all;
   display: block;
+}
+
+.top_card .card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+
+  .icon_img {
+    img {
+     width: 80px;
+    }
+  }
+
+  .text {
+    span {
+      font-weight: 700;
+      font-size: 26px;
+    }
+  }
+
+  &.one {
+    /* Purple */
+    background-color: #f3e8ff;
+    color: #9333ea;
+  }
+
+  &.two {
+    /* Teal */
+    background-color: #ccfbf1;
+    color: #14b8a6;
+  }
+
+  &.three {
+    background-color: #e0f2fe;
+    color: #0ea5e9;
+  }
+
+  &.four {
+    /* Rose */
+    background-color: #ffe4e6;
+    color: #f43f5e;
+
+  }
 }

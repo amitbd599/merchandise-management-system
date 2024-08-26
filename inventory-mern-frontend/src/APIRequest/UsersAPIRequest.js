@@ -18,10 +18,10 @@ export async function LoginRequest(email, password) {
 
         let PostBody = { "email": email, "password": password }
 
-        let res = await axios.post(URL, PostBody, {
+        return await axios.post(URL, PostBody, {
             withCredentials: true
         }).then((result) => {
-            console.log(result);
+            console.log(result.data.status);
 
             if (result.data.status === "success") {
                 setToken(result.data['token']);
