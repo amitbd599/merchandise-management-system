@@ -34,6 +34,10 @@ a {
   cursor: pointer !important;
 }
 
+a:hover {
+  color: var(--bg-color);
+  text-decoration: none;
+}
 .border-radius-0 {
   border-radius: 0 !important;
 }
@@ -108,4 +112,36 @@ td div {
     color: #f43f5e;
 
   }
+}
+.btn-success {
+  background-color: var(--bg-color);
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background-color: var(--bg-color) !important;
+    color: var(--bs-white) !important;
+    box-shadow: none !important;
+  }
+}
+
+.form-control-sm,
+.form-select-sm {
+  padding: 10px 20px;
+}
+
+.form-select:focus,
+.form-control:focus {
+  color: #495057;
+  background-color: var(--bs-white);
+  border-color: var(--bg-color);
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--bg-color);
+}
+
+.content {
+  padding-top: 20px;
 }

@@ -67,7 +67,7 @@ const SupplierCreateUpdate = () => {
                                     </div>
                                     <div className="col-12 p-2">
                                         <label className="form-label">Address</label>
-                                        <textarea onChange={(e)=>{store.dispatch(OnChangeSupplierInput({Name:"Address",Value:e.target.value}))}} value={FormValue.Address}  className="form-control form-control-sm" rows={4}/>
+                                        <textarea onChange={(e) => { store.dispatch(OnChangeSupplierInput({ Name: "Address", Value: e.target.value })) }} value={FormValue.Address} className="form-control form-control-sm" rows={10} />
                                     </div>
                                 </div>
                                 <div className="row">
