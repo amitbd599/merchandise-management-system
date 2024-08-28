@@ -1,10 +1,11 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {PurchaseListRequest} from "../../APIRequest/PurchaseAPIRequest";
 import {useSelector} from "react-redux";
-import {AiOutlineEye} from "react-icons/all";
+
 import ReactPaginate from "react-paginate";
 import moment from "moment";
 import CurrencyFormat from "react-currency-format";
+import { AiOutlineEye } from 'react-icons/ai';
 
 const PurchaseList = () => {
     let [searchKeyword,setSearchKeyword]=useState("0");

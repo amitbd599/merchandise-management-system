@@ -1,11 +1,14 @@
 import React, { Fragment, useRef } from 'react';
 import { Accordion, Container, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-import {AiOutlineBank, AiOutlineLogout, AiOutlineMenu, AiOutlineUser} from 'react-icons/ai';
+
 import { BsBagPlus, BsBagX, BsBox, BsCartPlus, BsGraphUp, BsPeople } from 'react-icons/bs';
-import { AiOutlineUnorderedList, FaAngleRight, IoCreateOutline, RiDashboardLine, TbTruckDelivery } from 'react-icons/all';
+import { RiDashboardLine } from "react-icons/ri";
+import { TbTruckDelivery } from "react-icons/tb";
+import { IoCreateOutline } from "react-icons/io5";
 import logo from "../../assets/images/Logo.svg"
 import {getUserDetails, removeSessions} from "../../helper/SessionHelper";
+import { AiOutlineBank, AiOutlineLogout, AiOutlineMenu, AiOutlineUnorderedList, AiOutlineUser } from 'react-icons/ai';
 const MasterLayout = (props) => {
   let contentRef, sideNavRef,topNavRef = useRef();
 

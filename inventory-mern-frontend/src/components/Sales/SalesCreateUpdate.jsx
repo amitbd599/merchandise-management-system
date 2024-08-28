@@ -1,10 +1,11 @@
 import React, {Fragment, useEffect, useRef} from 'react';
 import {CreateSaleRequest, CustomerDropDownRequest, ProductDropDownRequest} from "../../APIRequest/SaleAPIRequest";
 import {useSelector} from "react-redux";
-import {BsCartCheck, BsTrash} from "react-icons/all";
+
 import {ErrorToast, IsEmpty} from "../../helper/FormHelper";
 import store from "../../redux/store/store";
 import {OnChangeSaleInput, RemoveSaleItem, SetSaleItemList} from "../../redux/state-slice/sale-slice";
+import { BsCartCheck, BsTrash } from 'react-icons/bs';
 
 
 

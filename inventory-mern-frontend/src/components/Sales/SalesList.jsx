@@ -1,11 +1,11 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {SaleListRequest} from "../../APIRequest/SaleAPIRequest";
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
-import {AiOutlineEdit, AiOutlineEye} from "react-icons/all";
+
 import ReactPaginate from "react-paginate";
 import CurrencyFormat from "react-currency-format";
 import moment from "moment/moment";
+import { AiOutlineEye } from 'react-icons/ai';
 
 const SalesList = () => {
     let [searchKeyword,setSearchKeyword]=useState("0");
