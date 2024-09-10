@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
     if (!token) {
         token = req.cookies["token"];
     }
-    jwt.verify(token, "SecretKey123456789", function (err, decoded) {
+    jwt.verify(token, process.env.JWT_KEY, function (err, decoded) {
         if (err) {
 
             res.status(401).json({ status: "unauthorized" })

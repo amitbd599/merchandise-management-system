@@ -21,11 +21,11 @@ const mongoose = require('mongoose');
 // Security Middleware Implement
 app.use(cookieParser());
 app.use(
-    cors({
-      credentials: true,
-      origin: process.env.Origin_HOST_Site,
-    })
-  );
+  cors({
+    credentials: true,
+    origin: process.env.Origin_HOST_Site,
+  })
+);
 app.use(helmet())
 app.use(mongoSanitize())
 app.use(xss())
@@ -44,11 +44,13 @@ app.use(limiter)
 
 // Mongo DB Database Connection
 let URI = "mongodb+srv://<username>:<db_password>@cluster0.4kz14t4.mongodb.net/inventory?retryWrites=true&w=majority&appName=Cluster0";
-let OPTION = { user: 'amitbd591', pass: 'amitbd591@1234', autoIndex: true }
+let OPTION = { user: 'amitbd591', pass: process.env.DB_PASS, autoIndex: true, serverSelectionTimeoutMS: 50000 }
 mongoose.connect(URI, OPTION, (error) => {
-    console.log("Connection Success")
-    console.log(error)
+  console.log("Connection Success")
+  console.log(error)
 })
+mongoose.set('bufferCommands', false);
+
 
 
 // Routing Implement
@@ -56,7 +58,7 @@ app.use("/api/v1", router)
 
 // Undefined Route Implement
 app.use("*", (req, res) => {
-    res.status(404).json({ status: "fail", data: "Not Found" })
+  res.status(404).json({ status: "fail", data: "Not Found" })
 })
 
 

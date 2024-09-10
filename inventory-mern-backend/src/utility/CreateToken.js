@@ -1,9 +1,8 @@
 const jwt = require("jsonwebtoken");
-const CreateToken= async (data) => {
-    let Payload={exp: Math.floor(Date.now() / 1000) + (24*60*60), data:data}
-
-
-
-    return await jwt.sign(Payload, 'SecretKey123456789');
+const CreateToken = async (data) => {
+    let key = process.env.JWT_KEY;
+    let expire = process.env.JWT_Expire_Time;
+    let payload = { data: data };
+    return jwt.sign(payload, key, { expiresIn: expire });
 }
-module.exports=CreateToken
+module.exports = CreateToken
