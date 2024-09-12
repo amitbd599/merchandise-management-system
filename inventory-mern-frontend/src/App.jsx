@@ -1,6 +1,6 @@
-import React,{Fragment} from 'react';
-import {getToken} from "./helper/SessionHelper";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import React, { Fragment } from 'react';
+import { getToken } from "./helper/SessionHelper";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import DashboardPage from "./pages/Dashboard/DashboardPage";
 import Page404 from "./pages/NotFound/Page404";
 import FullscreenLoader from "./components/MasterLayout/FullscreenLoader";
@@ -35,53 +35,55 @@ import SupplierCreateUpdatePage from "./pages/Supplier/SupplierCreateUpdatePage"
 import SupplierListPage from "./pages/Supplier/SupplierListPage";
 import ExpenseTypeList from "./components/ExpenseType/ExpenseTypeList";
 import ExpenseTypeListPage from "./pages/ExpenseType/ExpenseTypeListPage";
+import InvoicePage from './pages/Users/InvoicePage';
 const App = () => {
-    if(getToken()){
+    if (getToken()) {
         return (
             <Fragment>
                 <BrowserRouter>
                     <Routes>
-                        <Route exact path="/BrandCreateUpdatePage" element={<BrandCreateUpdatePage />}/>
-                        <Route exact path="/BrandListPage" element={<BrandListPage />}/>
+                        <Route exact path="/BrandCreateUpdatePage" element={<BrandCreateUpdatePage />} />
+                        <Route exact path="/BrandListPage" element={<BrandListPage />} />
 
-                        <Route exact path="/CategoryCreateUpdatePage" element={<CategoryCreateUpdatePage />}/>
-                        <Route exact path="/CategoryListPage" element={<CategoryListPage />}/>
+                        <Route exact path="/CategoryCreateUpdatePage" element={<CategoryCreateUpdatePage />} />
+                        <Route exact path="/CategoryListPage" element={<CategoryListPage />} />
 
-                        <Route exact path="/CustomerCreateUpdatePage" element={<CustomerCreateUpdatePage />}/>
-                        <Route exact path="/CustomerListPage" element={<CustomerListPage />}/>
+                        <Route exact path="/CustomerCreateUpdatePage" element={<CustomerCreateUpdatePage />} />
+                        <Route exact path="/CustomerListPage" element={<CustomerListPage />} />
 
-                        <Route exact path="/ExpenseTypeCreateUpdatePage" element={<ExpenseTypeCreateUpdatePage />}/>
-                        <Route exact path="/ExpenseTypeListPage" element={<ExpenseTypeListPage />}/>
+                        <Route exact path="/ExpenseTypeCreateUpdatePage" element={<ExpenseTypeCreateUpdatePage />} />
+                        <Route exact path="/ExpenseTypeListPage" element={<ExpenseTypeListPage />} />
 
-                        <Route exact path="/ExpenseCreateUpdatePage" element={<ExpenseCreateUpdatePage />}/>
-                        <Route exact path="/ExpenseListPage" element={<ExpenseListPage />}/>
+                        <Route exact path="/ExpenseCreateUpdatePage" element={<ExpenseCreateUpdatePage />} />
+                        <Route exact path="/ExpenseListPage" element={<ExpenseListPage />} />
 
-                        <Route exact path="/ProductCreateUpdatePage" element={<ProductCreateUpdatePage />}/>
-                        <Route exact path="/ProductListPage" element={<ProductListPage />}/>
+                        <Route exact path="/ProductCreateUpdatePage" element={<ProductCreateUpdatePage />} />
+                        <Route exact path="/ProductListPage" element={<ProductListPage />} />
 
-                        <Route exact path="/PurchaseCreateUpdatePage" element={<PurchaseCreateUpdatePage />}/>
-                        <Route exact path="/PurchaseListPage" element={<PurchaseListPage />}/>
+                        <Route exact path="/PurchaseCreateUpdatePage" element={<PurchaseCreateUpdatePage />} />
+                        <Route exact path="/PurchaseListPage" element={<PurchaseListPage />} />
 
-                        <Route exact path="/ReturnCreateUpdatePage" element={<ReturnCreateUpdatePage />}/>
-                        <Route exact path="/ReturnListPage" element={<ReturnListPage />}/>
+                        <Route exact path="/ReturnCreateUpdatePage" element={<ReturnCreateUpdatePage />} />
+                        <Route exact path="/ReturnListPage" element={<ReturnListPage />} />
 
-                        <Route exact path="/SalesCreateUpdatePage" element={<SalesCreateUpdatePage />}/>
-                        <Route exact path="/SalesListPage" element={<SalesListPage />}/>
+                        <Route exact path="/SalesCreateUpdatePage" element={<SalesCreateUpdatePage />} />
+                        <Route exact path="/SalesListPage" element={<SalesListPage />} />
 
-                        <Route exact path="/SupplierCreateUpdatePage" element={<SupplierCreateUpdatePage />}/>
-                        <Route exact path="/SupplierListPage" element={<SupplierListPage />}/>
+                        <Route exact path="/SupplierCreateUpdatePage" element={<SupplierCreateUpdatePage />} />
+                        <Route exact path="/SupplierListPage" element={<SupplierListPage />} />
 
-                        <Route exact path="/PurchaseReportPage" element={<PurchaseReportPage />}/>
-                        <Route exact path="/ReturnReportPage" element={<ReturnReportPage />}/>
-                        <Route exact path="/SaleReportPage" element={<SaleReportPage />}/>
-                        <Route exact path="/ExpenseReportPage" element={<ExpenseReportPage />}/>
+                        <Route exact path="/PurchaseReportPage" element={<PurchaseReportPage />} />
+                        <Route exact path="/ReturnReportPage" element={<ReturnReportPage />} />
+                        <Route exact path="/SaleReportPage" element={<SaleReportPage />} />
+                        <Route exact path="/ExpenseReportPage" element={<ExpenseReportPage />} />
 
-                        <Route exact path="/" element={<DashboardPage />}/>
-                        <Route exact path="/Profile" element={<ProfilePage/>}/>
-                        <Route path="*" element={<Page404/>}/>
+                        <Route exact path="/" element={<DashboardPage />} />
+                        <Route exact path="/Profile" element={<ProfilePage />} />
+                        <Route exact path="/invoice/:id" element={<InvoicePage />} />
+                        <Route path="*" element={<Page404 />} />
                     </Routes>
                 </BrowserRouter>
-                <FullscreenLoader/>
+                <FullscreenLoader />
             </Fragment>
         );
     }
@@ -90,16 +92,16 @@ const App = () => {
             <Fragment>
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<Navigate to="/Login" replace />}/>
-                        <Route exact path="/Login" element={<LoginPage />}/>
-                        <Route exact path="/Registration" element={<RegistrationPage />}/>
-                        <Route exact path="/SendOTP" element={<SendOTPPage/>}/>
-                        <Route exact path="/VerifyOTP" element={<VerifyOTPPage/>}/>
-                        <Route exact path="/CreatePassword" element={<CreatePasswordPage/>}/>
-                        <Route path="*" element={<Page404/>}/>
+                        <Route path="/" element={<Navigate to="/Login" replace />} />
+                        <Route exact path="/Login" element={<LoginPage />} />
+                        <Route exact path="/Registration" element={<RegistrationPage />} />
+                        <Route exact path="/SendOTP" element={<SendOTPPage />} />
+                        <Route exact path="/VerifyOTP" element={<VerifyOTPPage />} />
+                        <Route exact path="/CreatePassword" element={<CreatePasswordPage />} />
+                        <Route path="*" element={<Page404 />} />
                     </Routes>
                 </BrowserRouter>
-                <FullscreenLoader/>
+                <FullscreenLoader />
             </Fragment>
         );
     }

@@ -1,32 +1,14 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import { useSelector } from "react-redux";
 
 import { ErrorToast, IsEmpty } from "../../helper/FormHelper";
 import store from "../../redux/store/store";
-import { OnChangePurchaseInput, RemovePurchaseItem, SetPurchaseFormValue, SetPurchaseItemList } from "../../redux/state-slice/purchase-slice";
+import { OnChangePurchaseInput, RemovePurchaseItem, SetPurchaseItemList } from "../../redux/state-slice/purchase-slice";
 import { CreatePurchaseRequest, ProductDropDownRequest, SupplierDropDownRequest } from "../../APIRequest/PurchaseAPIRequest";
 import { BsCartCheck, BsTrash } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
 
 
 const PurchaseCreateUpdate = () => {
-    const navigate = useNavigate();
-
-    // Create a new Date object and format the date
-    const currentDate = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = currentDate.toLocaleDateString('en-US', options);
-
-    const [vat, setVat] = useState(0);
-    const [discount, setDiscount] = useState(0);
-    const [otherCost, setOtherCost] = useState(0);
-    const [shippingCost, setShippingCost] = useState(0);
-    const [SupplierID, setSupplierID] = useState("");
-    const [note, setNote] = useState(`Purchase create successful ${formattedDate}`);
-
-
-
-
 
     let productRef, qtyRef, unitPriceRef = useRef();
 
@@ -41,7 +23,7 @@ const PurchaseCreateUpdate = () => {
     let SupplierDropDown = useSelector((state) => (state.purchase.SupplierDropDown));
     let ProductDropDown = useSelector((state) => (state.purchase.ProductDropDown));
     let PurchaseItemList = useSelector((state) => (state.purchase.PurchaseItemList));
-    // let PurchaseFormValue = useSelector((state) => (state.purchase.PurchaseFormValue));
+    let PurchaseFormValue = useSelector((state) => (state.purchase.PurchaseFormValue));
 
     const OnAddCart = () => {
         let productValue = productRef.value;
@@ -70,30 +52,32 @@ const PurchaseCreateUpdate = () => {
         }
 
     }
+
+
     const removeCart = (i) => {
         store.dispatch(RemovePurchaseItem(i))
     }
+
+
     const CreateNewPurchase = async () => {
-        let PurchaseFormValue = {
-            SupplierID: SupplierID,
-            VatTax: vat,
-            Discount: discount,
-            OtherCost: otherCost,
-            ShippingCost: shippingCost,
-            GrandTotal: totalValue,
-            Note: note,
-        }
+
+
+
+
 
         let res = await CreatePurchaseRequest(PurchaseFormValue, PurchaseItemList);
-        if (res) {
-            navigate("/PurchaseListPage");
-        }
+
     }
 
-    const totalValuebyselectProduct = PurchaseItemList.reduce((acc, product) => acc + product.Total, 0);
+    console.log(PurchaseItemList);
 
 
-    let totalValue = totalValuebyselectProduct + parseInt(vat) - parseInt(discount) + parseInt(otherCost) + parseInt(shippingCost)
+
+    const totalValue = PurchaseItemList.reduce((acc, product) => acc + product.Total, 0);
+
+    console.log(totalValue);
+
+
 
 
 
@@ -177,7 +161,7 @@ const PurchaseCreateUpdate = () => {
                                     <hr className="bg-light" />
                                     <div className="col-12 p-1">
                                         <label className="form-label">Supplier</label>
-                                        <select onChange={(e) => setSupplierID(e.target.value)} className="form-select form-select-sm">
+                                        <select onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "SupplierID", Value: e.target.value })) }} className="form-select form-select-sm">
                                             <option value="">Select Supplier</option>
                                             {
                                                 SupplierDropDown.map((item, i) => {
@@ -187,36 +171,35 @@ const PurchaseCreateUpdate = () => {
                                         </select>
                                     </div>
 
-
                                     <div className="col-12 p-1">
                                         <label className="form-label">Vat/Tax</label>
-                                        <input onChange={(e) => setVat(e.target.value)} className="form-control form-control-sm" type="number" />
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "VatTax", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
                                     </div>
 
                                     <div className="col-12 p-1">
                                         <label className="form-label">Discount</label>
-                                        <input onChange={(e) => setDiscount(e.target.value)} className="form-control form-control-sm" type="number" />
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "Discount", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
                                     </div>
 
                                     <div className="col-12 p-1">
                                         <label className="form-label">Other Cost</label>
-                                        <input onChange={(e) => setOtherCost(e.target.value)} className="form-control form-control-sm" type="number" />
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "OtherCost", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
                                     </div>
 
                                     <div className="col-12 p-1">
                                         <label className="form-label">Shipping Cost</label>
-                                        <input onChange={(e) => setShippingCost(e.target.value)} className="form-control form-control-sm" type="number" />
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "ShippingCost", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
                                     </div>
 
                                     <div className="col-12 p-1">
                                         <label className="form-label">Grand Total</label>
-                                        <input disabled value={totalValue} className="form-control form-control-sm" type="number" />
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "GrandTotal", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
                                     </div>
 
 
                                     <div className="col-12 p-1">
                                         <label className="form-label">Note</label>
-                                        <textarea defaultValue={note} onChange={(e) => setNote(e.target.value)} className="form-control form-control-sm" type="text" />
+                                        <input onChange={(e) => { store.dispatch(OnChangePurchaseInput({ Name: "Note", Value: e.target.value })) }} className="form-control form-control-sm" type="number" />
                                     </div>
 
 

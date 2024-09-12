@@ -5,13 +5,13 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.22.0",
-    "bootstrap": "^5.1.0",
+    "bootstrap": "^5.3.3",
     "cogo-toast": "^4.2.3",
     "export-from-json": "^1.7.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
-    "react-bootstrap": "^2.0.0-beta.6",
+    "react-bootstrap": "^2.10.4",
     "react-code-input": "^3.10.1",
     "react-currency-format": "^1.1.0",
     "react-dom": "18.0.0",
@@ -23,6 +23,7 @@
     "recharts": "^2.1.11",
     "redux": "^4.2.0",
     "sweetalert2": "^11.4.14",
+    "to-words": "^4.1.0",
     "webpack": "^5.94.0"
   },
   "scripts": {
