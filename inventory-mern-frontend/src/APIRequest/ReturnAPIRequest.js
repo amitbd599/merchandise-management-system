@@ -1,18 +1,18 @@
 import store from "../redux/store/store";
-import {HideLoader, ShowLoader} from "../redux/state-slice/settings-slice";
+import { HideLoader, ShowLoader } from "../redux/state-slice/settings-slice";
 import axios from "axios";
-import {ErrorToast, SuccessToast} from "../helper/FormHelper";
-import {getToken} from "../helper/SessionHelper";
-import {SetReturnList, SetReturnListTotal} from "../redux/state-slice/return-slice";
-import {BaseURL} from "../helper/config";
-import {SetCustomerDropDown, SetProductDropDown} from "../redux/state-slice/return-slice";
-const AxiosHeader={headers:{"token":getToken()}}
+import { ErrorToast, SuccessToast } from "../helper/FormHelper";
+import { getToken } from "../helper/SessionHelper";
+import { SetReturnList, SetReturnListTotal } from "../redux/state-slice/return-slice";
+import { BaseURL } from "../helper/config";
+import { SetCustomerDropDown, SetProductDropDown } from "../redux/state-slice/return-slice";
+const AxiosHeader = { headers: { "token": getToken() } }
 
 export async function ReturnListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/ReturnsList/"+pageNo+"/"+perPage+"/"+searchKeyword;
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/ReturnsList/" + pageNo + "/" + perPage + "/" + searchKeyword;
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'][0]['Rows'].length > 0) {
@@ -38,8 +38,8 @@ export async function ReturnListRequest(pageNo, perPage, searchKeyword) {
 export async function CustomerDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/CustomersDropDown";
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/CustomersDropDown";
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'].length > 0) {
@@ -61,8 +61,8 @@ export async function CustomerDropDownRequest() {
 export async function ProductDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/ProductsDropDown";
-        const result = await axios.get(URL,AxiosHeader)
+        let URL = BaseURL + "/ProductsDropDown";
+        const result = await axios.get(URL, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             if (result.data['data'].length > 0) {
@@ -82,16 +82,16 @@ export async function ProductDropDownRequest() {
 }
 
 
-export async function CreateReturnRequest(ParentBody,ChildsBody) {
+export async function CreateReturnRequest(ParentBody, ChildsBody) {
     try {
         store.dispatch(ShowLoader())
-        let PostBody={"Parent":ParentBody, "Childs":ChildsBody}
-        let URL = BaseURL+"/CreateReturns"
-        const result = await axios.post(URL,PostBody,AxiosHeader)
+        let PostBody = { "Parent": ParentBody, "Childs": ChildsBody }
+        let URL = BaseURL + "/CreateReturns"
+        const result = await axios.post(URL, PostBody, AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
             SuccessToast("Request Successful");
-            return  true;
+            return true;
         }
         else {
             ErrorToast("Request Fail ! Try Again")
@@ -101,6 +101,30 @@ export async function CreateReturnRequest(ParentBody,ChildsBody) {
     catch (e) {
         ErrorToast("Something Went Wrong")
         store.dispatch(HideLoader())
-        return  false
+        return false
+    }
+}
+
+
+export async function DeleteReturnRequest(ObjectID) {
+    try {
+        store.dispatch(ShowLoader())
+        let URL = BaseURL + "/ReturnDelete/" + ObjectID;
+        const result = await axios.delete(URL, AxiosHeader)
+        store.dispatch(HideLoader())
+
+        if (result.status === 200 && result.data['status'] === "success") {
+            SuccessToast("Request Successful");
+            return true
+        }
+        else {
+            ErrorToast("Request Fail ! Try Again")
+            return false;
+        }
+    }
+    catch (e) {
+        ErrorToast("Something Went Wrong")
+        store.dispatch(HideLoader())
+        return false
     }
 }

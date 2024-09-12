@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { PurchaseListRequest } from "../../APIRequest/PurchaseAPIRequest";
+import { DeletePurchaseRequest, PurchaseListRequest } from "../../APIRequest/PurchaseAPIRequest";
 import { useSelector } from "react-redux";
 
 import ReactPaginate from "react-paginate";
 import moment from "moment";
 import CurrencyFormat from "react-currency-format";
-import { AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineDelete, AiOutlineEye } from 'react-icons/ai';
 import ShowInvoiceDetails from '../MasterLayout/ShowInvoiceDetails';
+import { DeleteAlert } from '../../helper/DeleteAlert';
 
 const PurchaseList = () => {
     let [searchKeyword, setSearchKeyword] = useState("0");
@@ -52,6 +53,16 @@ const PurchaseList = () => {
         })
     }
 
+
+    const DeleteItem = async (id) => {
+        let Result = await DeleteAlert();
+        if (Result.isConfirmed) {
+            let DeleteResult = await DeletePurchaseRequest(id)
+            if (DeleteResult) {
+                await PurchaseListRequest(1, perPage, searchKeyword);
+            }
+        }
+    }
 
 
 
@@ -114,31 +125,31 @@ const PurchaseList = () => {
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.GrandTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.GrandTotal} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.ShippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.ShippingCost} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.VatTax} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.VatTax} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.OtherCost} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.OtherCost} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.Discount} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.Discount} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
@@ -150,6 +161,9 @@ const PurchaseList = () => {
                                                                     <td>
                                                                         <button onClick={() => { handleShow(); setIndex(index) }} className="btn btn-outline-light text-success p-2 mb-0 btn-sm ms-2">
                                                                             <AiOutlineEye size={15} />
+                                                                        </button>
+                                                                        <button onClick={() => DeleteItem(item._id)} className="btn btn-outline-light text-danger p-2 mb-0 btn-sm ms-2">
+                                                                            <AiOutlineDelete size={15} />
                                                                         </button>
                                                                     </td>
 

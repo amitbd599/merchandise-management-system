@@ -53,9 +53,11 @@ const ShowInvoiceDetails = ({ data }) => {
                                         <div className="row">
                                             <div className="col">Email:  {data?.UserEmail}</div>
                                             <div className="col text-center fw-600 text-3 text-uppercase">
-                                                Purchase Invoice
+                                                {!!data?.Products === true && "Purchase Invoice"}
+                                                {!!data?.Sales === true && "Sales Invoice"}
+                                                {!!data?.Returns === true && "Returns Invoice"}
                                             </div>
-                                            <div className="col text-end">GrandTotal: <strong>{data?.GrandTotal}৳</strong></div>
+                                            <div className="col text-end">GrandTotal: <strong>{data?.GrandTotal} ৳</strong></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -68,12 +70,16 @@ const ShowInvoiceDetails = ({ data }) => {
                                             <div className="col">
                                                 <address>
                                                     <strong>{data?.suppliers?.[0]?.Name}</strong>
+                                                    <strong>{data?.customers?.[0]?.CustomerName}</strong>
                                                     <br />
                                                     {data?.suppliers?.[0]?.Email}
+                                                    {data?.customers?.[0]?.Email}
                                                     <br />
                                                     {data?.suppliers?.[0]?.Phone}
+                                                    {data?.customers?.[0]?.Phone}
                                                     <br />
                                                     {data?.suppliers?.[0]?.Address}
+                                                    {data?.customers?.[0]?.Address}
                                                     <br />
 
                                                 </address>
@@ -82,14 +88,14 @@ const ShowInvoiceDetails = ({ data }) => {
                                     </td>
                                     <td className="col-5 bg-light">
                                         <div className="row gx-2 gy-1 fw-600">
-                                            <div className="col-4">
-                                                Invoice No <span className="float-end">:</span>
+                                            <div className="col-3">
+                                                No <span className="float-end">:</span>
                                             </div>
-                                            <div className="col-8">{data?._id}</div>
-                                            <div className="col-4">
+                                            <div className="col-9">{data?._id}</div>
+                                            <div className="col-3">
                                                 Date <span className="float-end">:</span>
                                             </div>
-                                            <div className="col-8">{moment(data?.CreatedDate).format('MMMM Do YYYY')}</div>
+                                            <div className="col-9">{moment(data?.CreatedDate).format('MMMM Do YYYY')}</div>
 
                                         </div>
                                     </td>
@@ -117,6 +123,7 @@ const ShowInvoiceDetails = ({ data }) => {
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {/* For Returns */}
                                                 {
                                                     data?.Products?.map((item, index) =>
                                                         <tr key={index}>
@@ -129,13 +136,45 @@ const ShowInvoiceDetails = ({ data }) => {
                                                     )
                                                 }
 
+                                                {/* For Sales */}
+                                                {
+                                                    data?.Sales?.map((item, index) =>
+                                                        <tr key={index}>
+                                                            <td className="col-1 text-center">{index + 1}</td>
+                                                            <td className="col-6">{item?.ProductID}</td>
+                                                            <td className="col-1 text-center">{item?.Qty}</td>
+                                                            <td className="col-2 text-end">{item?.UnitCost}</td>
+                                                            <td className="col-2 text-end">{item?.Total}</td>
+                                                        </tr>
+                                                    )
+                                                }
+                                                {/* For Returns */}
+                                                {
+                                                    data?.Returns?.map((item, index) =>
+                                                        <tr key={index}>
+                                                            <td className="col-1 text-center">{index + 1}</td>
+                                                            <td className="col-6">{item?.ProductID}</td>
+                                                            <td className="col-1 text-center">{item?.Qty}</td>
+                                                            <td className="col-2 text-end">{item?.UnitCost} ৳</td>
+                                                            <td className="col-2 text-end">{item?.Total} ৳</td>
+                                                        </tr>
+                                                    )
+                                                }
+
 
                                             </tbody>
                                         </table>
                                     </td>
                                 </tr>
                                 <tr className="bg-light fw-600">
-                                    <td className="col-7 py-1">Purchase ID: {data?.Products?.[0]?.PurchaseID}</td>
+                                    <td className="col-7 py-1">
+                                        {!!data?.Products === true && "Purchase ID: "}
+                                        {!!data?.Sales === true && "Sales ID: "}
+                                        {!!data?.Returns === true && "Return ID: "}
+                                        {data?.Products?.[0]?.PurchaseID}
+                                        {data?.Sales?.[0]?.SaleID}
+                                        {data?.Returns?.[0]?.ReturnID}
+                                    </td>
                                     <td className="col-5 py-1 pe-1">
                                         Sub Total: <span className="float-end">{data?.GrandTotal - data?.VatTax - data?.OtherCost - data?.ShippingCost + data?.Discount}</span>
                                     </td>
@@ -147,16 +186,16 @@ const ShowInvoiceDetails = ({ data }) => {
                                     </td>
                                     <td className="col-5 pe-1">
                                         Vat Tax:
-                                        <span className="float-end">+ {data?.VatTax}</span>
+                                        <span className="float-end">+ {data?.VatTax} ৳</span>
                                         <br />
                                         Shipping Cost:
-                                        <span className="float-end">+ {data?.ShippingCost}</span>
+                                        <span className="float-end">+ {data?.ShippingCost} ৳</span>
                                         <br />
                                         Other Cost:
-                                        <span className="float-end">+ {data?.OtherCost}</span>
+                                        <span className="float-end">+ {data?.OtherCost} ৳</span>
                                         <br />
                                         Discount:
-                                        <span className="float-end">- {data?.Discount}</span>
+                                        <span className="float-end">- {data?.Discount} ৳</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -176,7 +215,7 @@ const ShowInvoiceDetails = ({ data }) => {
                                     <td className="col-5 pe-1 text-end">
                                         For, Merchandise Shop
                                         <div className="text-1 fst-italic mt-5">
-                                            (Authorised Signatory)
+                                            (Authorized Signatory)
                                         </div>
                                     </td>
                                 </tr>
