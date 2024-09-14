@@ -45,13 +45,13 @@ const BrandCreateUpdate = () => {
                             <div className="row">
                                 <h5 >Save Brand</h5>
                                 <hr className="bg-light"/>
-                                <div className="col-4 p-2">
+                                <div className="col-lg-4 p-2">
                                     <label className="form-label">Brand Name</label>
                                     <input onChange={(e)=>{store.dispatch(OnChangeBrandInput({Name:"Name",Value:e.target.value}))}} value={FormValue.Name} className="form-control form-control-sm" type="text"/>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-4 p-2">
+                                <div className="col-lg-4 p-2">
                                     <button onClick={SaveChange} className="btn btn-sm my-3 btn-success">Save Change</button>
                                 </div>
                             </div>

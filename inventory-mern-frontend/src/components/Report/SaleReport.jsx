@@ -54,17 +54,17 @@ const SaleReport = () => {
                                 <h5 >Sales Report by Date</h5>
                                 <hr className="bg-light"/>
 
-                                <div className="col-4 p-2">
+                                <div className="col-md-4 p-2">
                                     <label className="form-label">Date Form:</label>
                                     <input  ref={(input)=>formRef=input} className="form-control form-control-sm" type="date"/>
                                 </div>
-                                <div className="col-4 p-2">
+                                <div className="col-md-4 p-2">
                                     <label className="form-label">Date To:</label>
                                     <input  ref={(input)=>toRef=input} className="form-control form-control-sm" type="date"/>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-4 p-2">
+                                <div className="col-md-4 p-2">
                                     <button onClick={CreateReport} className="btn btn-sm my-3 btn-success">Create</button>
                                 </div>
                             </div>

@@ -71,13 +71,13 @@ const ProductCreateUpdate = () => {
                                 <h5 >Save Product Type</h5>
                                 <hr className="bg-light"/>
 
-                                <div className="col-4 p-2">
+                                <div className="col-lg-4 col-md-6 p-2">
                                     <label className="form-label">Product Name</label>
                                     <input onChange={(e)=>{store.dispatch(OnChangeProductInput({Name:"Name",Value:e.target.value}))}} value={FormValue.Name} className="form-control form-control-sm" type="text"/>
                                 </div>
 
 
-                                <div className="col-4 p-2">
+                                <div className="col-lg-4 col-md-6 p-2">
                                     <label className="form-label">Product Brand</label>
                                     <select onChange={(e)=>{store.dispatch(OnChangeProductInput({Name:"BrandID",Value:e.target.value}))}} value={FormValue.BrandID} className="form-select form-select-sm">
                                         <option value="">Select Type</option>
@@ -90,7 +90,7 @@ const ProductCreateUpdate = () => {
                                 </div>
 
 
-                                <div className="col-4 p-2">
+                                <div className="col-lg-4 col-md-6 p-2">
                                     <label className="form-label">Product Category</label>
                                     <select onChange={(e)=>{store.dispatch(OnChangeProductInput({Name:"CategoryID",Value:e.target.value}))}} value={FormValue.CategoryID} className="form-select form-select-sm">
                                         <option value="">Select Type</option>
@@ -103,19 +103,19 @@ const ProductCreateUpdate = () => {
                                 </div>
 
 
-                                <div className="col-4 p-2">
+                                <div className="col-lg-4 col-md-6 p-2">
                                     <label className="form-label">Unit</label>
                                     <input onChange={(e)=>{store.dispatch(OnChangeProductInput({Name:"Unit",Value:e.target.value}))}} value={FormValue.Unit} className="form-control form-control-sm" type="text"/>
                                 </div>
 
-                                <div className="col-4 p-2">
+                                <div className="col-lg-4 col-md-6 p-2">
                                     <label className="form-label">Details</label>
                                     <input onChange={(e)=>{store.dispatch(OnChangeProductInput({Name:"Details",Value:e.target.value}))}} value={FormValue.Details} className="form-control form-control-sm" type="text"/>
                                 </div>
 
                             </div>
                             <div className="row">
-                                <div className="col-4 p-2">
+                                <div className="col-lg-4 col-md-6 p-2">
                                     <button onClick={SaveChange} className="btn btn-sm my-3 btn-success">Save Change</button>
                                 </div>
                             </div>

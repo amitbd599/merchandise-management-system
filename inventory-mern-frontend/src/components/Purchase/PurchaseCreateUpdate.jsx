@@ -107,7 +107,7 @@ const PurchaseCreateUpdate = () => {
                             <div className="card-body">
 
                                 <div className="row">
-                                    <div className="col-6  p-1">
+                                    <div className="col-xl-6 col-lg-6  p-1">
                                         <label className="form-label">Select Product</label>
                                         <select ref={(input) => productRef = input} className="form-select form-select-sm">
                                             <option value="">Select Product</option>
@@ -118,15 +118,15 @@ const PurchaseCreateUpdate = () => {
                                             }
                                         </select>
                                     </div>
-                                    <div className="col-2 p-1">
+                                    <div className="col-xl-2 col-lg-6 p-1">
                                         <label className="form-label">Qty</label>
                                         <input ref={(input) => qtyRef = input} className="form-control form-control-sm" />
                                     </div>
-                                    <div className="col-2 p-1">
+                                    <div className="col-xl-2 col-lg-6 p-1">
                                         <label className="form-label">Unit Price</label>
                                         <input ref={(input) => unitPriceRef = input} className="form-control form-control-sm" />
                                     </div>
-                                    <div className="col-2 p-1">
+                                    <div className="col-xl-2 col-lg-6 p-1">
                                         <label className="form-label">Add to cart</label>
                                         <button onClick={OnAddCart} className="btn w-100 btn-success btn-sm"><BsCartCheck /></button>
                                     </div>
