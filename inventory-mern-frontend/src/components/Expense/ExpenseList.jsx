@@ -115,7 +115,7 @@ const ExpenseList = () => {
                                                                 <td><p className="text-xs text-start">{i+1}</p></td>
                                                                 <td><p className="text-xs text-start">{item.Type[0]?item.Type[0]['Name']:""}</p></td>
                                                                 <td><p className="text-xs text-start">
-                                                                    <CurrencyFormat value={item.Amount} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                    <CurrencyFormat value={item.Amount} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                 </p></td>
                                                                 <td><p className="text-xs text-start">{item.Note}</p></td>
                                                                 <td>

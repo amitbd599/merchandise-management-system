@@ -38,7 +38,7 @@ const Dashboard = () => {
     return (
         <div className="container-fluid">
             <div className="row top_card">
-                <div className="col-xl-6 col-md-6 p-2">
+                <div className="col-xl-3 col-md-6 p-2">
                     <div className="card">
                         <div className="card-body one">
                             <div>
@@ -53,7 +53,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-xl-6 col-md-6 p-2">
+                <div className="col-xl-3 col-md-6 p-2">
                     <div className="card ">
                         <div className="card-body two">
                             <div>
@@ -68,7 +68,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-xl-6 col-md-6 p-2">
+                <div className="col-xl-3 col-md-6 p-2">
                     <div className="card">
                         <div className="card-body three">
                             <div>
@@ -83,7 +83,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-xl-6 col-md-6 p-2">
+                <div className="col-xl-3 col-md-6 p-2">
                     <div className="card">
                         <div className="card-body four">
                             <div>
