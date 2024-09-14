@@ -53,15 +53,15 @@ const SupplierCreateUpdate = () => {
                                     <h5 >Save Supplier</h5>
                                     <hr className="bg-light"/>
 
-                                    <div className="col-4 p-2">
+                                    <div className="col-md-4 p-2">
                                         <label className="form-label">Supplier Name</label>
                                         <input onChange={(e)=>{store.dispatch(OnChangeSupplierInput({Name:"Name",Value:e.target.value}))}} value={FormValue.Name} className="form-control form-control-sm" type="text"/>
                                     </div>
-                                    <div className="col-4 p-2">
+                                    <div className="col-md-4 p-2">
                                         <label className="form-label">Mobile No</label>
                                         <input onChange={(e)=>{store.dispatch(OnChangeSupplierInput({Name:"Phone",Value:e.target.value}))}} value={FormValue.Phone} className="form-control form-control-sm" type="text"/>
                                     </div>
-                                    <div className="col-4 p-2">
+                                    <div className="col-md-4 p-2">
                                         <label className="form-label">Email </label>
                                         <input onChange={(e)=>{store.dispatch(OnChangeSupplierInput({Name:"Email",Value:e.target.value}))}} value={FormValue.Email} className="form-control form-control-sm" type="text"/>
                                     </div>
@@ -71,7 +71,7 @@ const SupplierCreateUpdate = () => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-4 p-2">
+                                    <div className="col-md-4 p-2">
                                         <button onClick={SaveChange} className="btn btn-sm my-3 btn-success">Save Change</button>
                                     </div>
                                 </div>
