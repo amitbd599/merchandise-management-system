@@ -125,31 +125,31 @@ const SalesList = () => {
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.GrandTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.GrandTotal} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.ShippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.ShippingCost} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.VatTax} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.VatTax} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.OtherCost} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.OtherCost} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 
                                                                     <td>
                                                                         <p className="text-xs text-start">
-                                                                            <CurrencyFormat value={item.Discount} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                                                            <CurrencyFormat value={item.Discount} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                                                         </p>
                                                                     </td>
 

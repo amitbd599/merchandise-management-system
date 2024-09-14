@@ -38,12 +38,12 @@ const Dashboard = () => {
     return (
         <div className="container-fluid">
             <div className="row top_card">
-                <div className="col-md-3 p-2">
+                <div className="col-xl-6 col-md-6 p-2">
                     <div className="card">
                         <div className="card-body one">
                             <div>
                                 <span className="text">
-                                    <CurrencyFormat value={ExpenseTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                    <CurrencyFormat value={ExpenseTotal} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                 </span>
                                 <p>Calculate total expense</p>
                             </div>
@@ -53,12 +53,12 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-3 p-2">
+                <div className="col-xl-6 col-md-6 p-2">
                     <div className="card ">
                         <div className="card-body two">
                             <div>
                                 <span className="text">
-                                    <CurrencyFormat value={SaleTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                    <CurrencyFormat value={SaleTotal} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                 </span>
                                 <p>Calculate total sale</p>
                             </div>
@@ -68,12 +68,12 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-3 p-2">
+                <div className="col-xl-6 col-md-6 p-2">
                     <div className="card">
                         <div className="card-body three">
                             <div>
                                 <span className="text">
-                                    <CurrencyFormat value={PurchaseTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                    <CurrencyFormat value={PurchaseTotal} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                 </span>
                                 <p>Total Purchase</p>
                             </div>
@@ -83,12 +83,12 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-3 p-2">
+                <div className="col-xl-6 col-md-6 p-2">
                     <div className="card">
                         <div className="card-body four">
                             <div>
                                 <span className="text">
-                                    <CurrencyFormat value={ReturnTotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                                    <CurrencyFormat value={ReturnTotal} displayType={'text'} thousandSeparator={true} prefix={'৳ '} />
                                 </span>
                                 <p>Total Return</p>
                             </div>
@@ -100,7 +100,7 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-6 p-2">
+                <div className="col-xl-6 p-2">
                     <div className="card">
                         <div className="card-body">
 
@@ -143,7 +143,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6 p-2">
+                <div className="col-xl-6 p-2">
                     <div className="card">
                         <div className="card-body">
 
@@ -186,7 +186,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6 p-2">
+                <div className="col-xl-6 p-2">
                     <div className="card">
                         <div className="card-body">
 
@@ -229,7 +229,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6 p-2">
+                <div className="col-xl-6 p-2">
                     <div className="card">
                         <div className="card-body">
 
