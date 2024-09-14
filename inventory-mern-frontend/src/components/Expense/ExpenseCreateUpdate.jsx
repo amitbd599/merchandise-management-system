@@ -59,7 +59,7 @@ const ExpenseCreateUpdate = () => {
                             <div className="row">
                                 <h5>Save Expense</h5>
                                 <hr className="bg-light"/>
-                                <div className="col-4 p-2">
+                                <div className="col-md-4 p-2">
                                     <label className="form-label">Expense Type</label>
                                     <select onChange={(e)=>{store.dispatch(OnChangeExpenseInput({Name:"TypeID",Value:e.target.value}))}} value={FormValue.TypeID} className="form-select form-select-sm">
                                         <option value="">Select Type</option>
@@ -70,17 +70,17 @@ const ExpenseCreateUpdate = () => {
                                         }
                                     </select>
                                 </div>
-                                <div className="col-4 p-2">
+                                <div className="col-md-4 p-2">
                                     <label className="form-label">Expense Amount</label>
                                     <input onChange={(e)=>{store.dispatch(OnChangeExpenseInput({Name:"Amount",Value:e.target.value}))}} value={FormValue.Amount} className="form-control form-control-sm" type="number"/>
                                 </div>
-                                <div className="col-4 p-2">
+                                <div className="col-md-4 p-2">
                                     <label className="form-label">Expense Note</label>
                                     <input onChange={(e)=>{store.dispatch(OnChangeExpenseInput({Name:"Note",Value:e.target.value}))}} value={FormValue.Note} className="form-control form-control-sm" type="text"/>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-4 p-2">
+                                <div className="col-md-4 p-2">
                                     <button onClick={SaveChange}  className="btn btn-sm my-3 btn-success">Save Change</button>
                                 </div>
                             </div>
